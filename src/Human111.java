@@ -5,8 +5,8 @@
 import java.util.Scanner;
 public class Human111 {
     public static void main (String[] args) {
-        Person vasya = new Person();
-        Person katya = new Person();
+        people.Person vasya = new people.Person();
+        people.Person katya = new people.Person();
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Ведите возраст Васи");
@@ -47,7 +47,7 @@ public class Human111 {
     }
 }
 
-class Person {
+class people.Person {
     private int rost;
     private int age;
 

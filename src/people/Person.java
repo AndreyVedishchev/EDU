@@ -1,14 +1,18 @@
+package people;
+
 class Person {
     private int rost;//Они не ограничены!
     private int age;
     String name;
+    Birthday bd;
 
-    Person(int i, int z, String s) {
-        setAge(i);
-        setRost(z);
-        this.name = s;
-
+    Person(int age, int rost, String name,int dd, int mm, int yyyy) {
+        setAge(age);
+        setRost(rost);
+        this.name = name;
+        bd = new Birthday(dd,mm,yyyy);
     }
+
     public void setAge(int age) {
         this.age = age;
         if (age < 0) this.age = 0;

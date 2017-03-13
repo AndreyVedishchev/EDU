@@ -1,7 +1,10 @@
+package people;
+
 public class PersonDemo {
     public  static void main(String[] args){
-        Person p1 = new Person(-20,6546,"Катя");
-        Person p2 = new Person(18,1800,"Вася");
+        Person p1 = new Person(-20,6546,"Катя", 25, 8, 1998);
+        Person p2 = new Person(18,1800,"Вася", 4, 9, 1999);
+
         Comparator obcmp = new Comparator();
         obcmp.Compare(p1,p2);
         Compare(p1,p2);

@@ -10,19 +10,19 @@ import java.util.Scanner;
         int q = scan.nextInt();
         System.out.println("Введите рост Кати");
         int w = scan.nextInt();*/
-        //Person vasya = new Person(24, 178);
-        //Person katya = new Person(57, 156);
+        //people.Person vasya = new people.Person(24, 178);
+        //people.Person katya = new people.Person(57, 156);
         //vasya.compair();
         //katya.compair();
 
    // }
 //}
 
-/*class Person {
+/*class people.Person {
     private int rost;
     private int age;
 
-    Person(int i, int z) {
+    people.Person(int i, int z) {
         age = i;
         rost = z;
         setAge(i);
@@ -36,7 +36,7 @@ import java.util.Scanner;
         System.out.println();
         System.out.println(getAge());
     }
-    /*Person(int q,int w) {
+    /*people.Person(int q,int w) {
         age = q;
         rost = w;
         setAge(q);
