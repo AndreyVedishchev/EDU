@@ -17,9 +17,9 @@ public class OOP {
 
     public int gety(){//getter
         return y;
-    }
+    } //возвращает
 
-    public  void sety(int p){
+    public  void sety(int p){ //принимает
         if (p <= 0) y = 0;
         else y = p;
     }
