@@ -7,6 +7,7 @@ public class AirPlane extends Vehicle{
     public AirPlane(int maxspeed, int capacity, int passenger, int fuelConsumption) {
         super(maxspeed, 'A', capacity, passenger, fuelConsumption);//вызов конструктора суперкласса!!
         setFuelcost(fuelcost);
+        getFuelcost();
     }
 
     public void setFuelcost(double fuelcost) {
@@ -17,8 +18,8 @@ public class AirPlane extends Vehicle{
         return fuelcost;
     }
 
-    public void calculationAir() {
-        double c = fuelConsumption / maxspeed * 100 * getFuelcost() / capacity;
-        System.out.println(c + " цена перелета 100 км для 1 пассажира");
-    }
+    //public void calculationAir() {
+    //    double c = fuelConsumption / maxspeed * 100 * getFuelcost() / capacity;
+    //    System.out.println(c + " цена перелета 100 км для 1 пассажира");
+    //}
 }
