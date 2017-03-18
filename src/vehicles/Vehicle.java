@@ -5,9 +5,11 @@ public class Vehicle {
     char type;//A-air, G-Ground, W -water
     int capacity;
     int passenger;
-    int fuelConsumption;//сделать private или protected и организовать доступ
+    int fuelConsumption;//сделать private или protected и организовать доступ // договоримся, что это л на 100км
     //fuelType - class !! (тип, цена....)
     //сравниить эффективность авто и самолета по цене на 1 пассажира
+    //NEW
+    Fuel fuel;
 
     Vehicle(int maxspeed, char type, int capacity, int passenger, int fuelConsumption) {
         this.maxspeed = maxspeed;
@@ -15,6 +17,11 @@ public class Vehicle {
         this.capacity = capacity;
         this.passenger = passenger;
         this.fuelConsumption = fuelConsumption;
+    }
+
+    Vehicle(int maxspeed, char type, int capacity, int passenger, int fuelConsumption, Fuel fuel) {
+        this(maxspeed,type,capacity,passenger,fuelConsumption);//обрати внимание  на эту строку!
+        this.fuel = fuel;
     }
 
     public void setMaxspeed(int maxspeed) {
