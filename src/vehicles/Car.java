@@ -11,11 +11,5 @@ public class Car extends Vehicle{
 
     Car(int maxspeed, int capacity, int passenger, int fuelConsumption, Fuel fuel, int tankVolume) {
         super(maxspeed, 'G', capacity, passenger, fuelConsumption, fuel, tankVolume);
-}
-
-    float calcPriceOfKm(){
-        float ret;
-        ret =  ((float)this.fuelConsumption/100 * this.fuel.getPrice()/this.capacity);
-        return ret;
     }
 }

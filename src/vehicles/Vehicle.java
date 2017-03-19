@@ -61,4 +61,10 @@ public class Vehicle {
         max = ((float)tankVolume/fuelConsumption*100);
         return max;
     }
+
+    float calcPriceOfKm(){
+        float ret;
+        ret =  ((float)this.fuelConsumption/100 * this.fuel.getPrice()/this.capacity);
+        return ret;
+    }
 }
