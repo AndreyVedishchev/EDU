@@ -2,24 +2,14 @@ package vehicles;
 
 public class AirPlane extends Vehicle{
     //add attributes
-    double fuelcost;
 
-    public AirPlane(int maxspeed, int capacity, int passenger, int fuelConsumption) {
-        super(maxspeed, 'A', capacity, passenger, fuelConsumption);//вызов конструктора суперкласса!!
-        setFuelcost(fuelcost);
-        getFuelcost();
+    public AirPlane(int maxspeed, int capacity, int passenger, int fuelConsumption, Fuel fuel,  int tankVolume) {
+        super(maxspeed, 'A', capacity, passenger, fuelConsumption, fuel, tankVolume);//вызов конструктора суперкласса!!
     }
 
-    public void setFuelcost(double fuelcost) {
-        this.fuelcost = 31.5;
+    float calcPriceOfKm(){
+        float ret;
+        ret =  ((float)this.fuelConsumption/100 * this.fuel.getPrice()/this.capacity);
+        return ret;
     }
-
-    public double getFuelcost() {
-        return fuelcost;
-    }
-
-    //public void calculationAir() {
-    //    double c = fuelConsumption / maxspeed * 100 * getFuelcost() / capacity;
-    //    System.out.println(c + " цена перелета 100 км для 1 пассажира");
-    //}
 }
