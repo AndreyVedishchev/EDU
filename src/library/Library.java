@@ -1,28 +1,14 @@
 package library;
 
 public class Library implements Abstract{
-    int quantityBooks;  //сколько книг числится в библиотеке
-    int qanttityReaders;//сколько читателей в библиотеке
+    static int quantityBooks = 100;  //сколько книг числится в библиотеке
     String fio;
     int age;
     int takeBooks; //сколько книг на руках
     int attendance;//сколько раз приходит в месяц
 
-    Library(int quantityBooks, int qanttityReaders, String fio, int age, int takeBooks, int attendance) {
-        this.quantityBooks = quantityBooks;
-        this.qanttityReaders = qanttityReaders;
-        this.fio = fio;
-        this.age = age;
-        this.takeBooks = takeBooks;
-        this.attendance = attendance;
-    }
 
-    Library(int quantityBooks, int qanttityReaders) {
-        this.quantityBooks = 1000;
-        this.qanttityReaders = qanttityReaders;
-    }
-
-    public void setQuantityBooks(int quantityBooks) {
+    /*public void setQuantityBooks(int quantityBooks) {
         if (quantityBooks > 0)this.quantityBooks = quantityBooks;
         else this.quantityBooks = 0;
     }
@@ -50,13 +36,11 @@ public class Library implements Abstract{
     public void setAttendance(int attendance) {
         if (attendance > 0)this.attendance = attendance;
         else this.attendance = 0;
-    }
+    }*/
 
-    public int calkBooks() {
+    public void calkBooks() {
         System.out.println("Числится книг в библиотеке "+quantityBooks+" шт.");
-        quantityBooks--;
         System.out.println("осталось "+quantityBooks);
         System.out.println();
-        return quantityBooks;
     }
 }

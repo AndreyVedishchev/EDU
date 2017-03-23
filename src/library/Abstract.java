@@ -1,5 +1,5 @@
 package library;
 
 public interface Abstract {
-   int calkBooks();
+   void calkBooks();
 }
