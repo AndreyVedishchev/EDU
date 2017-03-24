@@ -1,10 +1,16 @@
 package library.alt;
 
-/**
- * Created by Erixon on 23.03.2017.
- */
 public class Reader {
     private Library library;
+    private String fio;
+    private int attendance;
+    private int age;
+
+    public Reader(String fio, int attendance, int age) {
+        this.fio = fio;
+        this.attendance = attendance;
+        this.age = age;
+    }
 
     public Library getLibrary() {
         return library;
