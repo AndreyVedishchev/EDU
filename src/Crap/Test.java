@@ -6,11 +6,21 @@ package Crap;
 public class Test {
     public static void main (String[] args) {
 
-        //0..... восьмиричное представленне
-        //0b... двоичное
-        //0x... шестнадцатиричное
+        String s1;
+        String s2;
 
-        System.out.print(getFactorial(10));
+        s1 = "HEre"; //создан 1 объект 2214896
+        s2 = s1;
+        s1 = "Where"; //83545287
+        System.out.println("s1 " + s1.hashCode());
+        System.out.println("s2 " + s2.hashCode());
+        Crap ob1, ob2;
+        ob1 = new Crap("hey");
+        ob2 = ob1;
+        ob1.s = "lala";
+
+        System.out.println("ob1 " + ob1.s);
+        System.out.println("ob2 " + ob2.s);
     }
     static int getFactorial(int p){
         int ret;

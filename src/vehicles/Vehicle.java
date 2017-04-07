@@ -1,6 +1,6 @@
 package vehicles;
 
-public class Vehicle {
+public abstract class Vehicle {// это транспортные средства
     protected int maxspeed;
     protected char type;//A-air, G-Ground, W -water
     protected int capacity;
@@ -10,6 +10,7 @@ public class Vehicle {
     //сравниить эффективность авто и самолета по цене на 1 пассажира
     //NEW
     protected Fuel fuel;
+    protected int fuelLevel;
     private int tankVolume;
 
     Vehicle(int maxspeed, char type, int capacity, int passenger, int fuelConsumption) {
@@ -26,6 +27,11 @@ public class Vehicle {
         this.tankVolume = tankVolume;
     }
 
+    Vehicle(int maxspeed, char type, int capacity, int passenger, int fuelConsumption, Fuel fuel, int tankVolume, int fuelLevel){
+        this(maxspeed,type, capacity,passenger,fuelConsumption,fuel,tankVolume);
+        this.fuelLevel = fuelLevel;
+
+    }
     public void setMaxspeed(int maxspeed) {
         if (maxspeed > 0) this.maxspeed = maxspeed;
         else this.maxspeed = 0;
@@ -67,4 +73,6 @@ public class Vehicle {
         ret =  ((float)this.fuelConsumption/100 * this.fuel.getPrice()/this.capacity);
         return ret;
     }
+
+
 }

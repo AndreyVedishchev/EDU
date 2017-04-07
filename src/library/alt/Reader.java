@@ -19,4 +19,14 @@ public class Reader {
     public void setLibrary(Library library) {
         this.library = library;
     }
+    public void printLibrary(){
+        if(this.library != null){
+            System.out.println(this.fio + " является читателем библиотеки им. " + this.library.getName());
+        }
+        else {
+            System.out.println(this.fio + " не читает книги!");
+        }
+
+    }
+
 }

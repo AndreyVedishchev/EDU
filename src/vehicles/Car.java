@@ -1,6 +1,6 @@
 package vehicles;
 
-public class Car extends Vehicle{
+class Car extends Vehicle implements VehicleMove,Test {
     //объем бака -> метод по расчету макс дальности! подумать, где его разместить в этом классе или в супере
     //add attributes
     // топливо в Vehicle
@@ -9,7 +9,15 @@ public class Car extends Vehicle{
         super(maxspeed, 'G', capacity, passenger, fuelConsumption);//вызов конструктора суперкласса!!
     }
 
-    Car(int maxspeed, int capacity, int passenger, int fuelConsumption, Fuel fuel, int tankVolume) {
-        super(maxspeed, 'G', capacity, passenger, fuelConsumption, fuel, tankVolume);
+    Car(int maxspeed, int capacity, int passenger, int fuelConsumption, Fuel fuel, int tankVolume, int fuelLevel) {
+        super(maxspeed, 'G', capacity, passenger, fuelConsumption, fuel, tankVolume, fuelLevel);
+    }
+
+    public void move(){
+        this.fuelLevel--;
+    }
+
+    public void stop(){
+        System.out.println("BEEEP");
     }
 }
