@@ -1,5 +1,7 @@
 package library.alt;
 
+import java.lang.*;
+
 class Library {
     private int cntBook;
     private int cntReader;
@@ -35,16 +37,19 @@ class Library {
         this.cntReader = cntReader;
     }
 
-    void addReader(Reader reader){
+    void addReader(Reader reader) throws ReaderAlreadyInLibraryException{
         //System.out.println("книг было "+getCntBook()+" шт.");
-        reader.setLibrary(this);
-        this.cntReader++;
-        this.cntBook--;
+        if (reader.getLibrary() == null){
+            reader.setLibrary(this);
+            this.cntReader++;
+            this.cntBook--;
+        }
+        else {
+            throw new ReaderAlreadyInLibraryException();
+        }
+
         //System.out.println("добавляем читателя\nчитателей "+getCntReader()+" осталось книг "+getCntBook());
     }
-    /*public void setLibrary(Library library) {
-        this.library = library;
-    }*/
 
     void removeReader(Reader reader){
         if (reader.getLibrary() == this) {
