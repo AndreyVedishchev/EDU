@@ -3,12 +3,10 @@ package library.alt;
 public class Reader {
     private Library library;
     private String fio;
-    private int attendance;
     private int age;
 
-    public Reader(String fio, int attendance, int age) {
+    public Reader(String fio, int age) {
         this.fio = fio;
-        this.attendance = attendance;
         this.age = age;
     }
 
@@ -19,6 +17,7 @@ public class Reader {
     public void setLibrary(Library library) {
         this.library = library;
     }
+
     public void printLibrary(){
         if(this.library != null){
             System.out.println(this.fio + " является читателем библиотеки им. " + this.library.getName());

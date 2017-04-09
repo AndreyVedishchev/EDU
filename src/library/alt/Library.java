@@ -6,18 +6,12 @@ class Library {
     private int cntBook;
     private int cntReader;
     private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private Reader reader;
+    private Book book;
 
     public Library(int cntBook, String name) {
         this.cntBook = cntBook;
-        this.cntReader = 120;
+        this.cntReader = 0;
         this.name = name;
     }
 
@@ -37,8 +31,31 @@ class Library {
         this.cntReader = cntReader;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Reader getReader() {
+        return reader;
+    }
+
+    public void setReader(Reader reader) {
+        this.reader = reader;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
     void addReader(Reader reader) throws ReaderAlreadyInLibraryException{
-        //System.out.println("книг было "+getCntBook()+" шт.");
         if (reader.getLibrary() == null){
             reader.setLibrary(this);
             this.cntReader++;
