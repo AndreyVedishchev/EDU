@@ -3,16 +3,25 @@ package library.alt;
 import java.lang.*;
 
 class Library {
-    private int cntBook;
-    private int cntReader;
+    private int cntBook; //необязательная индексная переменная
+    private int cntReader; //необязательная индексная переменная
     private String name;
-    private Reader reader;
-    private Book book;
+    private Reader[] readerList;
+    private Book[] bookList;
 
+    @Deprecated
     public Library(int cntBook, String name) {
-        this.cntBook = cntBook;
+        this.cntBook = 0;
         this.cntReader = 0;
         this.name = name;
+    }
+
+    public Library(String name, int maxBooks, int maxReaders){
+        this.name = name;
+        this.bookList = new Book[maxBooks];
+        this.readerList = new Reader[maxReaders];
+        this.cntBook = 0;
+        this.cntReader = 0;
     }
 
     public int getCntBook() {
@@ -39,40 +48,24 @@ class Library {
         this.name = name;
     }
 
-    public Reader getReader() {
-        return reader;
-    }
-
-    public void setReader(Reader reader) {
-        this.reader = reader;
-    }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
     void addReader(Reader reader) throws ReaderAlreadyInLibraryException{
         if (reader.getLibrary() == null){
+            this.readerList[this.cntReader] = reader;//здесь может быть ошибка!! подумай какая, и как ее отлавливать!
             reader.setLibrary(this);
             this.cntReader++;
-            this.cntBook--;
         }
         else {
             throw new ReaderAlreadyInLibraryException();
         }
 
-        //System.out.println("добавляем читателя\nчитателей "+getCntReader()+" осталось книг "+getCntBook());
     }
+
 
     void removeReader(Reader reader){
         if (reader.getLibrary() == this) {
+            //TODO продумай алгоритм удаления читателя из спсика читателей!
             reader.setLibrary(null);
             this.cntReader--;
-            this.cntBook++;
             //System.out.println("удаляем читателя\nчитателей "+getCntReader()+" осталось книг "+getCntBook());
         }
     }

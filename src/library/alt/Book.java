@@ -2,6 +2,8 @@ package library.alt;
 
 public class Book {
     private int cntPages;
+    private String caption;
+    private String author;
 
     public Book(int cntPages) {
         this.cntPages = cntPages;
