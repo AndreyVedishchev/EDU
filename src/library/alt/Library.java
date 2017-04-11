@@ -37,7 +37,8 @@ class Library {
     }
 
     public void setCntReader(int cntReader) {
-        this.cntReader = cntReader;
+        if (this.cntReader > 120)this.cntReader = 120;
+        if (this.cntReader < 0)this.cntReader = 0;
     }
 
     public String getName() {
@@ -50,7 +51,7 @@ class Library {
 
     void addReader(Reader readerList) throws ReaderAlreadyInLibraryException{
         if (readerList.getLibrary() == null){
-            this.readerList[this.cntReader] = readerList;//здесь может быть ошибка!! подумай какая, и как ее отлавливать!
+            this.readerList[this.getCntReader()] = readerList;//здесь может быть ошибка!! подумай какая, и как ее отлавливать!
             readerList.setLibrary(this);
             this.cntReader++;
         }
@@ -60,13 +61,12 @@ class Library {
 
     }
 
-
-    void removeReader(Reader reader){
-        if (reader.getLibrary() == this) {
+    void removeReader(Reader readerList){
+        if (readerList.getLibrary() == this) {
             //TODO продумай алгоритм удаления читателя из спсика читателей!
-            reader.setLibrary(null);
+            readerList.setLibrary(null);
             this.cntReader--;
-            //System.out.println("удаляем читателя\nчитателей "+getCntReader()+" осталось книг "+getCntBook());
+            System.out.println("удаляем читателя\nчитателей "+getCntReader()+" осталось книг "+getCntBook());
         }
     }
 }
