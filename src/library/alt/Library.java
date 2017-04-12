@@ -48,10 +48,10 @@ class Library {
         this.name = name;
     }
 
-    void addReader(Reader readerList) throws ReaderAlreadyInLibraryException{
-        if (readerList.getLibrary() == null){
-            this.readerList[this.cntReader] = readerList;//здесь может быть ошибка!! подумай какая, и как ее отлавливать!
-            readerList.setLibrary(this);
+    void addReader(Reader reader) throws ReaderAlreadyInLibraryException{
+        if (reader.getLibrary() == null){
+            this.readerList[this.cntReader] = reader;//здесь может быть ошибка!! подумай какая, и как ее отлавливать!
+            reader.setLibrary(this);
             this.cntReader++;
         }
         else {
