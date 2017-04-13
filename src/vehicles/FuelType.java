@@ -24,10 +24,5 @@ public class FuelType extends Vehicle {
         return cost;
     }
 
-    /*public void compare() {
-        double m = fuelConsumption / maxspeed * 100 * air.getFuelcost() / capacity;
-        double q = ob.getFuelcar() / fuelConsumption * 100;
-        if (m > q) {System.out.println("самолет дешевле автомобиля");}
-        else {System.out.println("автомобиль дешевле самолета");}
-    }*///удалить!
+
 }
