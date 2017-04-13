@@ -9,13 +9,6 @@ class Library {
     private Reader[] readerList;
     private Book[] bookList;
 
-    @Deprecated
-    public Library(int cntBook, String name) {
-        this.cntBook = 0;
-        this.cntReader = 0;
-        this.name = name;
-    }
-
     public Library(String name, int maxBooks, int maxReaders){
         this.name = name;
         this.bookList = new Book[maxBooks];
@@ -53,20 +46,19 @@ class Library {
             this.readerList[this.cntReader] = reader;//здесь может быть ошибка!! подумай какая, и как ее отлавливать!
             reader.setLibrary(this);
             this.cntReader++;
+            System.out.println("кол-во читателей "+cntReader);
         }
         else {
             throw new ReaderAlreadyInLibraryException();
         }
-
     }
-
 
     void removeReader(Reader reader){
         if (reader.getLibrary() == this) {
-            //TODO продумай алгоритм удаления читателя из спсика читателей!
+            this.readerList[this.cntReader] = null;//TODO продумай алгоритм удаления читателя из спсика читателей!
             reader.setLibrary(null);
             this.cntReader--;
-            //System.out.println("удаляем читателя\nчитателей "+getCntReader()+" осталось книг "+getCntBook());
+            System.out.println("кол-во читателей "+cntReader);
         }
     }
 }
