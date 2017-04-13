@@ -3,8 +3,8 @@ package library.alt;
 public class Test {
     public static void main (String args []) throws ReaderAlreadyInLibraryException{
 
-            final int maxReaders = 120;
-            final int maxBooks = 100;
+            final int maxReaders = 100;
+            final int maxBooks = 120;
 
         Reader[] reader = new Reader[maxReaders];
         reader[0] = new Reader("Иванов", 56);
@@ -16,7 +16,7 @@ public class Test {
         book[1] = new Book(375);
         book[2] = new Book(490);
 
-        Library library = new Library("Ленина", 75, 45);
+        Library library = new Library("Ленина", maxBooks, maxReaders);
 
         library.addReader(reader[0]);
         library.addReader(reader[1]);
