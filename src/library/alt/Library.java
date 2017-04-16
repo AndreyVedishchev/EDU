@@ -1,10 +1,9 @@
 package library.alt;
 
-import java.lang.*;
 
 class Library {
-    private int cntBook; //необязательная индексная переменная
-    private int cntReader; //необязательная индексная переменная
+    private int cntBook; //необязательная индексная переменная TODO избавится от переменных
+    private int cntReader; //необязательная индексная переменная TODO избавится от переменных
     private String name;
     private Reader[] readerList;
     private Book[] bookList;
@@ -46,7 +45,6 @@ class Library {
             this.readerList[this.cntReader] = reader;//здесь может быть ошибка!! подумай какая, и как ее отлавливать!
             reader.setLibrary(this);
             this.cntReader++;
-            System.out.println("кол-во читателей "+cntReader);
         }
         else {
             throw new ReaderAlreadyInLibraryException();
@@ -54,11 +52,32 @@ class Library {
     }
 
     void removeReader(Reader reader){
-        if (reader.getLibrary() == this) {
-            this.readerList[this.cntReader] = null;//TODO продумай алгоритм удаления читателя из спсика читателей!
+        if (reader.getLibrary() == this) {//TODO продумай алгоритм удаления читателя из спсика читателей!
             reader.setLibrary(null);
             this.cntReader--;
-            System.out.println("кол-во читателей "+cntReader);
         }
+    }
+
+    @Deprecated
+    void printLibraryDepr() {
+        for (int i = 0; i < 10; i++){
+            try {
+                System.out.println(i + " | " + readerList[i].getFio() + " | " + "Книга1, Книга 2, Книга 4\n"  );
+            }
+            catch (NullPointerException exc) {
+            }
+        }
+    }
+    void printLibrary(){
+        for (int i = 0; i < 10; i++){
+            if (readerList[i] != null) {
+                System.out.println(i + " | " + readerList[i].getFio() + " | " + "Книга1, Книга 2, Книга 4\n"  );
+            } else break;
+        }
+    }
+
+    void addBook(Book book) {
+        this.bookList[this.cntBook] = book;
+        book.setLibrary(this);
     }
 }

@@ -1,12 +1,33 @@
 package library.alt;
 
 public class Book {
-    private int cntPages;
+
     private String caption;
     private String author;
+    private int cntPages;
+    private Library library;
+    private Reader reader;
 
-    public Book(int cntPages) {
+    public Book(String caption, String author, int cntPages) {
+        this.caption = caption;
+        this.author = author;
         this.cntPages = cntPages;
+    }
+
+    public void setLibrary(Library library) {
+        this.library = library;
+    }
+
+    public Library getLibrary() {
+        return library;
+    }
+
+    public Reader getReader() {
+        return reader;
+    }
+
+    public void setReader(Reader reader) {
+        this.reader = reader;
     }
 
     public void setCntPages(int cntPages) {
@@ -16,5 +37,9 @@ public class Book {
 
     public int getCntPages() {
         return cntPages;
+    }
+
+    public String getCaption() {
+        return caption;
     }
 }
