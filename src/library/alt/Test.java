@@ -17,6 +17,7 @@ public class Test {
         book[2] = new Book("Таинственный остров", "Ж. Верн",490);
 
         Library library = new Library("Ленина", maxBooks, maxReaders);
+        Library library1 = new Library("МГУ",100,10);
 
         library.addReader(reader[0]);
         library.addReader(reader[1]);
@@ -34,6 +35,8 @@ public class Test {
         library.removeReader(reader[0]);
         reader[0].printLibrary();
         reader[0].printReaderBooklist();
+
+        System.out.println(library.getCntReader());
     }
 }
 

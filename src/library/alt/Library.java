@@ -3,7 +3,7 @@ package library.alt;
 
 class Library {
     private int cntBook; //необязательная индексная переменная TODO избавится от переменных
-    private int cntReader; //необязательная индексная переменная TODO избавится от переменных
+    private int cntReader;
     private String name;
     private Reader[] readerList;
     private Book[] bookList;
@@ -13,7 +13,7 @@ class Library {
         this.bookList = new Book[maxBooks];
         this.readerList = new Reader[maxReaders];
         this.cntBook = 0;
-        this.cntReader = 0;
+        //this.cntReader = 0;
     }
 
     public int getCntBook() {
@@ -25,12 +25,16 @@ class Library {
     }
 
     public int getCntReader() {
-        return cntReader;
+        int ln = 0;
+        for (int i = 0; i < readerList.length; i++) {
+            if (readerList[i] != null) {
+                ln++;
+            }
+        }
+        return ln;
     }
 
-    public void setCntReader(int cntReader) {
-        this.cntReader = cntReader;
-    }
+    //public void setCntReader(int cntReader) {this.cntReader = cntReader;}
 
     public String getName() {
         return name;
@@ -40,16 +44,19 @@ class Library {
         this.name = name;
     }
 
-    void addReader(Reader reader) throws ReaderAlreadyInLibraryException{
-        if (reader.getLibrary() == null){
-            this.readerList[this.cntReader] = reader;//здесь может быть ошибка!! подумай какая, и как ее отлавливать!
-            reader.setLibrary(this);
-            this.cntReader++;
+    void addReader(Reader reader) throws ReaderAlreadyInLibraryException {//TODO если мы попытаемся назначить уже занятого читчателя, то ReaderAlreadyInLibraryException
+
+        for (int i = 0; i < readerList.length; i++) {//TODO проверка, что мы ДЕЙСТВИТЕЛЬНО записали в список читетеленй; Не прошли проверку - LibraryIsFull
+            if (readerList[i] == null) {
+                readerList[i] = reader;
+                break;
+            }
+
         }
-        else {
-            throw new ReaderAlreadyInLibraryException();
-        }
+
+        reader.setLibrary(this);
     }
+
 
     void removeReader(Reader reader){
         if (reader.getLibrary() == this) {//TODO продумай алгоритм удаления читателя из спсика читателей!
