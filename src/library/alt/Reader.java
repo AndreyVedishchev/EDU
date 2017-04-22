@@ -34,13 +34,14 @@ public class Reader {
         }
     }
 
-    void addBook(Book book) throws ArrayIndexOutOfBoundsException{//TODO доделать метод, чтобы исключить перезаписывание
-        if (book.getReader() == null) {
-            this.bookList[getBookCnt()] = book;
-            book.setReader(this);
+    void addBook(Book book) {
+        try {
+            if (book.getReader() == null) {
+                this.bookList[getBookCnt()] = book;
+                book.setReader(this);
+            }
         }
-        else {
-            throw new ArrayIndexOutOfBoundsException();
+        catch (ArrayIndexOutOfBoundsException exc) {
         }
     }
 

@@ -1,7 +1,7 @@
 package library.alt;
 
 public class Test {
-    public static void main (String args []) throws ReaderAlreadyInLibraryException, ArrayIndexOutOfBoundsException {
+    public static void main (String args []) throws ReaderAlreadyInLibraryException {
 
             final int maxReaders = 100;
             final int maxBooks = 120;
@@ -21,20 +21,22 @@ public class Test {
 
         library.addReader(reader[0]);
         library.addReader(reader[1]);
-        library.addReader(reader[2]);
+        //library.addReader(reader[2]);
+        //library.addReader(reader[2]);
 
         reader[0].addBook(book[0]);
         reader[0].addBook(book[1]);
         reader[0].addBook(book[2]);
-        reader[0].printReaderBooklist();
+        //reader[0].printReaderBooklist();
 
-        reader[0].printLibrary();
+        /*reader[0].printLibrary();
         reader[1].printLibrary();
-        reader[2].printLibrary();
+        reader[2].printLibrary();*/
 
         library.removeReader(reader[0]);
-        reader[0].printLibrary();
-        reader[0].printReaderBooklist();
+        //library.removeReader(reader[1]);
+        //reader[0].printLibrary();
+        //reader[0].printReaderBooklist();
 
         System.out.println(library.getCntReader());
     }

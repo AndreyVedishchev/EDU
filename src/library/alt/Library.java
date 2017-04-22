@@ -1,9 +1,7 @@
 package library.alt;
 
-
 class Library {
     private int cntBook; //необязательная индексная переменная TODO избавится от переменных
-    private int cntReader;
     private String name;
     private Reader[] readerList;
     private Book[] bookList;
@@ -13,7 +11,6 @@ class Library {
         this.bookList = new Book[maxBooks];
         this.readerList = new Reader[maxReaders];
         this.cntBook = 0;
-        //this.cntReader = 0;
     }
 
     public int getCntBook() {
@@ -34,8 +31,6 @@ class Library {
         return ln;
     }
 
-    //public void setCntReader(int cntReader) {this.cntReader = cntReader;}
-
     public String getName() {
         return name;
     }
@@ -45,25 +40,30 @@ class Library {
     }
 
     void addReader(Reader reader) throws ReaderAlreadyInLibraryException {//TODO если мы попытаемся назначить уже занятого читчателя, то ReaderAlreadyInLibraryException
-
-        for (int i = 0; i < readerList.length; i++) {//TODO проверка, что мы ДЕЙСТВИТЕЛЬНО записали в список читетеленй; Не прошли проверку - LibraryIsFull
-            if (readerList[i] == null) {
-                readerList[i] = reader;
-                break;
-            }
-
+       if (reader.getLibrary() != null) {
+            throw new ReaderAlreadyInLibraryException();
         }
-
-        reader.setLibrary(this);
+        if (getCntReader() < readerList.length) {
+            for (int i = 0; i < readerList.length; i++) {
+                if (readerList[i] == null) {
+                    readerList[i] = reader;
+                    break;
+                }
+            }
+            reader.setLibrary(this);
+        }
+        if (reader.getLibrary() == this) {
+            System.out.println("Читатель " + reader.getFio() + " добавден в библиотеку " + this.getName());
+        }
     }
-
 
     void removeReader(Reader reader){
-        if (reader.getLibrary() == this) {//TODO продумай алгоритм удаления читателя из спсика читателей!
-            reader.setLibrary(null);
-            this.cntReader--;
+        if (reader.getLibrary() == this) {
+            reader.setLibrary(null);}
+        if (reader.getLibrary() == null) {
+            System.out.println(reader.getFio() + " удален");
+            }
         }
-    }
 
     @Deprecated
     void printLibraryDepr() {
@@ -75,6 +75,7 @@ class Library {
             }
         }
     }
+
     void printLibrary(){
         for (int i = 0; i < 10; i++){
             if (readerList[i] != null) {
