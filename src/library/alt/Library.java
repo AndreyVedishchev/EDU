@@ -39,7 +39,7 @@ class Library {
         this.name = name;
     }
 
-    void addReader(Reader reader) throws ReaderAlreadyInLibraryException {//TODO если мы попытаемся назначить уже занятого читчателя, то ReaderAlreadyInLibraryException
+    void addReader(Reader reader) throws ReaderAlreadyInLibraryException, LibraryIsFull {//TODO если мы попытаемся назначить уже занятого читчателя, то ReaderAlreadyInLibraryException
        if (reader.getLibrary() != null) {
             throw new ReaderAlreadyInLibraryException();
         }
@@ -52,18 +52,20 @@ class Library {
             }
             reader.setLibrary(this);
         }
-        if (reader.getLibrary() == this) {
-            System.out.println("Читатель " + reader.getFio() + " добавден в библиотеку " + this.getName());
+        else {
+           throw new LibraryIsFull();
         }
     }
 
-    void removeReader(Reader reader){
+    void removeReader(Reader reader) throws Exception {
         if (reader.getLibrary() == this) {
             reader.setLibrary(null);}
-        if (reader.getLibrary() == null) {
-            System.out.println(reader.getFio() + " удален");
-            }
+        else {
+            throw new Exception();
         }
+
+        //todo сканируем readerList находим нащего reader и обнуляем эту строку
+    }
 
     @Deprecated
     void printLibraryDepr() {
