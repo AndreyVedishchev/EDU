@@ -22,7 +22,7 @@ class Library {
     }
 
     public int getCntReader() {
-        int ln = 0;
+        int ln = 0, lk = 1;
         for (int i = 0; i < readerList.length; i++) {
             if (readerList[i] != null) {
                 ln++;
@@ -63,8 +63,12 @@ class Library {
         else {
             throw new Exception();
         }
-
-        //todo сканируем readerList находим нащего reader и обнуляем эту строку
+        for (int i = 0; i < readerList.length; i++) {
+            if (readerList[i] != null) {
+                readerList[i] = null;
+                break;
+            }
+        }//todo сканируем readerList находим нащего reader и обнуляем эту строку
     }
 
     @Deprecated
