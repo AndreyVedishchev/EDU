@@ -62,10 +62,10 @@ class Library {
             reader.setLibrary(null);
         }
         else {
-            throw new Exception();
+            throw new Exception();//todo поменять на свой
         }
         for (int i = 0; i < readerList.length; i++) {
-            if (readerList[i] != null) {
+            if (readerList[i] == reader){
                 readerList[i] = null;
                 break;
             }
