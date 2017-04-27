@@ -8,6 +8,4 @@ public class ReaderAlreadyInLibraryException extends Exception {
     public String toString(){
         return "Читатель уже находится в библитеке!";
     }
-
-
 }

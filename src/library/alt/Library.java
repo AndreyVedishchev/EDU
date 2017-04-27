@@ -57,12 +57,12 @@ class Library {
         }
     }
 
-    void removeReader(Reader reader) throws Exception {
+    void removeReader(Reader reader) throws ObjectIsMissing {
         if (reader.getLibrary() == this) {
             reader.setLibrary(null);
         }
         else {
-            throw new Exception();//todo поменять на свой
+            throw new ObjectIsMissing();
         }
         for (int i = 0; i < readerList.length; i++) {
             if (readerList[i] == reader){
@@ -105,11 +105,11 @@ class Library {
         }
     }
 
-    void removeBook (Book book) throws Exception{
+    void removeBook (Book book) throws ObjectIsMissing {
         if (book.getLibrary() == this) {
             book.setLibrary(null);
         } else {
-            throw new Exception();
+            throw new ObjectIsMissing();
         }
         for (int i = 0; i < bookList.length; i++) {
             if (bookList[i] != null) {

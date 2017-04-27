@@ -5,8 +5,19 @@ package manInMaze;
  */
 public class Monster extends Entity implements IFightable, IMoveable {
 
-    public Monster(int x, int y, int hits) {
+    private Grid grid;
+
+    public Monster(int x, int y, int hits, Grid grid) {
         super(x, y, hits);
+        this.grid = grid;
+    }
+
+    public Grid getGrid() {
+        return grid;
+    }
+
+    public void setGrid(Grid grid) {
+        this.grid = grid;
     }
 
     @Override

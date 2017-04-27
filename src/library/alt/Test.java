@@ -1,7 +1,7 @@
 package library.alt;
 
 public class Test {
-    public static void main (String args []) throws ReaderAlreadyInLibraryException, LibraryIsFull, Exception {
+    public static void main (String args []) throws Exception {
 
             final int maxReaders = 100;
             final int maxBooks = 120;
