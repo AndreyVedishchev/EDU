@@ -24,7 +24,7 @@ public class Test {
     }
     static int getFactorial(int p){
         int ret;
-        if (p == 1) return 1;
+       // if (p == 1) return 1;
         ret = getFactorial(p-1) * p;
         return ret;
     }

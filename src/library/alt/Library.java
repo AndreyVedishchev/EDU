@@ -1,10 +1,6 @@
 package library.alt;
 
-import java.lang.*;
-
 class Library {
-    private int cntBook; //необязательная индексная переменная
-    private int cntReader; //необязательная индексная переменная
     private String name;
     private Reader[] readerList;
     private Book[] bookList;
@@ -13,24 +9,26 @@ class Library {
         this.name = name;
         this.bookList = new Book[maxBooks];
         this.readerList = new Reader[maxReaders];
-        this.cntBook = 0;
-        this.cntReader = 0;
     }
 
     public int getCntBook() {
-        return cntBook;
-    }
-
-    public void setCntBook(int cntBook) {
-        this.cntBook = cntBook;
+        int lk = 0;
+        for (int j = 0; j < bookList.length; j++) {
+            if (bookList[j] != null) {
+                lk++;
+            }
+        }
+        return lk;
     }
 
     public int getCntReader() {
-        return cntReader;
-    }
-
-    public void setCntReader(int cntReader) {
-        this.cntReader = cntReader;
+        int ln = 0;
+        for (int i = 0; i < readerList.length; i++) {
+            if (readerList[i] != null) {
+                ln++;
+            }
+        }
+        return ln;
     }
 
     public String getName() {
@@ -41,24 +39,83 @@ class Library {
         this.name = name;
     }
 
-    void addReader(Reader reader) throws ReaderAlreadyInLibraryException{
-        if (reader.getLibrary() == null){
-            this.readerList[this.cntReader] = reader;//здесь может быть ошибка!! подумай какая, и как ее отлавливать!
+    void addReader(Reader reader) throws ReaderAlreadyInLibraryException, LibraryIsFull {
+       if (reader.getLibrary() != null) {
+           throw new ReaderAlreadyInLibraryException();
+       }
+        if (getCntReader() < readerList.length) {
+            for (int i = 0; i < readerList.length; i++) {
+                if (readerList[i] == null) {
+                    readerList[i] = reader;
+                    break;
+                }
+            }
             reader.setLibrary(this);
-            this.cntReader++;
-            System.out.println("кол-во читателей "+cntReader);
         }
         else {
-            throw new ReaderAlreadyInLibraryException();
+           throw new LibraryIsFull();
         }
     }
 
-    void removeReader(Reader reader){
+    void removeReader(Reader reader) throws Exception {
         if (reader.getLibrary() == this) {
-            this.readerList[this.cntReader] = null;//TODO продумай алгоритм удаления читателя из спсика читателей!
             reader.setLibrary(null);
-            this.cntReader--;
-            System.out.println("кол-во читателей "+cntReader);
+        }
+        else {
+            throw new Exception();//todo поменять на свой
+        }
+        for (int i = 0; i < readerList.length; i++) {
+            if (readerList[i] == reader){
+                readerList[i] = null;
+                break;
+            }
+        }
+    }
+
+    @Deprecated
+    void printLibraryDepr() {
+        for (int i = 0; i < 10; i++){
+            try {
+                System.out.println(i + " | " + readerList[i].getFio() + " | " + "Книга1, Книга 2, Книга 4\n"  );
+            }
+            catch (NullPointerException exc) {
+            }
+        }
+    }
+
+    void printLibrary(){
+        for (int i = 0; i < 10; i++){
+            if (readerList[i] != null) {
+                System.out.println(i + " | " + readerList[i].getFio() + " | " + "Книга1, Книга 2, Книга 4\n"  );
+            } else break;
+        }
+    }
+
+    void addBook(Book book) throws LibraryIsFull{
+        if (getCntBook() < bookList.length) {
+            for (int i = 0; i < bookList.length; i++){
+               if (bookList[i] == null) {
+                   bookList[i] = book;
+                   break;
+               }
+            }
+            book.setLibrary(this);
+        }else {
+            throw new LibraryIsFull();
+        }
+    }
+
+    void removeBook (Book book) throws Exception{
+        if (book.getLibrary() == this) {
+            book.setLibrary(null);
+        } else {
+            throw new Exception();
+        }
+        for (int i = 0; i < bookList.length; i++) {
+            if (bookList[i] != null) {
+                bookList[i] = null;
+                break;
+            }
         }
     }
 }
