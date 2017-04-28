@@ -2,6 +2,8 @@ package manInMaze;
 
 import java.applet.Applet;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * Created by User on 26.04.2017.
@@ -10,11 +12,25 @@ import java.awt.*;
     <applet code="TestApp" width=500 height=500>
     </applet>
  */
-public class Grid extends Applet{
+public class Grid extends Applet implements MouseListener {
     private Man man;
     private Monster monster;
     private Wall wall;
+    private String msg = "?";
+    private int x = 200;
+    private int y = 200;
 
+    public void init(){
+        addMouseListener(this); //добавили слушателя
+    }
+
+    public void paint(Graphics g) {
+        g.drawString("o", x, y);
+    }
+
+    public Grid() {
+
+    }
     public Grid(Man man, Monster monster, Wall wall) throws HeadlessException {
         this.man = man;
         this.monster = monster;
@@ -43,5 +59,35 @@ public class Grid extends Applet{
 
     public Wall getWall() {
         return wall;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        e.getX();//координата X щелчка
+        e.getY();//координата Y шелчка
+        x++;
+        y++;
+        repaint();
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }
