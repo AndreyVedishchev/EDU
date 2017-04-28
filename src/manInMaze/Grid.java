@@ -25,7 +25,7 @@ public class Grid extends Applet implements MouseListener {
     }
 
     public void paint(Graphics g) {
-        g.drawString("o", x, y);
+        g.drawString(msg, x, y);
     }
 
     public Grid() {
@@ -65,6 +65,7 @@ public class Grid extends Applet implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         e.getX();//координата X щелчка
         e.getY();//координата Y шелчка
+        msg = "" + e.getButton();
         x++;
         y++;
         repaint();
