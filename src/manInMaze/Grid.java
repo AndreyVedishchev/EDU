@@ -9,7 +9,7 @@ import java.awt.event.MouseListener;
  * Created by User on 26.04.2017.
  */
 /*
-    <applet code="TestApp" width=500 height=500>
+    <applet code="Grid" width=500 height=500>
     </applet>
  */
 public class Grid extends Applet implements MouseListener {
@@ -63,13 +63,12 @@ public class Grid extends Applet implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        e.getX();//координата X щелчка
-        e.getY();//координата Y шелчка
-        msg = "" + e.getButton();
-        x++;
-        y++;
+        if (e.getX() < x) x--;
+        if (e.getX() > x) x++;
+        if (e.getY() < y) y--;
+        if (e.getY() > y) y++;
+        msg = "1";
         repaint();
-
     }
 
     @Override
