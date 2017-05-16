@@ -1,31 +1,37 @@
 package Crap;
 
+import library.alt.Reader;
+
 /**
  * Created by User on 13.03.2017.
  */
 public class Test {
     public static void main (String[] args) {
+        Crap crap = new Crap("SMTH");
+        Crap2 crap2 = new Crap2();
+        crap = crap2;
 
-        String s1;
-        String s2;
+        if(crap instanceof Crap2){
+            System.out.println("YES");
+        } else System.out.println("NO");
 
-        s1 = "HEre"; //создан 1 объект 2214896
-        s2 = s1;
-        s1 = "Where"; //83545287
-        System.out.println("s1 " + s1.hashCode());
-        System.out.println("s2 " + s2.hashCode());
-        Crap ob1, ob2;
-        ob1 = new Crap("hey");
-        ob2 = ob1;
-        ob1.s = "lala";
 
-        System.out.println("ob1 " + ob1.s);
-        System.out.println("ob2 " + ob2.s);
-    }
-    static int getFactorial(int p){
-        int ret;
-       // if (p == 1) return 1;
-        ret = getFactorial(p-1) * p;
-        return ret;
+        String s1 = "Test";
+        String s2 = "Test";
+
+        s2 = "!";
+
+        if(s1=="Test"){
+            System.out.println("YES");
+        } else System.out.println("NO");
+
+
+        Reader rd = new Reader("TRT",11);
+        Reader rd_copy = new Reader("TRT",11);
+
+        if(rd_copy==rd){
+            System.out.println("YES");
+        } else System.out.println("NO");
+
     }
 }

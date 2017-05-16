@@ -6,10 +6,10 @@ public class Test {
             final int maxReaders = 100;
             final int maxBooks = 120;
 
-        Reader[] reader = new Reader[maxReaders];
+        Reader[] reader = new Reader[5];
         reader[0] = new Reader("Иванов", 56);
         reader[1] = new Reader("Петров", 45);
-        reader[2] = new Reader("Сидоров", 42);
+        Reader rdr = new Reader("Сидоров", 42);
 
         Book[] book = new Book[maxBooks];
         book[0] = new Book("Кавказский пленник", "А.С. Пушкин",260);
@@ -22,6 +22,7 @@ public class Test {
         library.addReader(reader[0]);
         library.addReader(reader[1]);
         library.addReader(reader[2]);
+        library.addReader(rdr);
         //library.addReader(reader[2]);
         library.addBook(book[0]);
         library.addBook(book[1]);
@@ -38,6 +39,7 @@ public class Test {
 
         //library.removeReader(reader[0]);
         //library.removeReader(reader[1]);
+        library.removeReader(rdr);
         //reader[0].printLibrary();
         //reader[0].printReaderBooklist();
 
