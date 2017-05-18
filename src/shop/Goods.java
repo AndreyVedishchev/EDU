@@ -2,9 +2,9 @@ package shop;
 
 public class Goods {
     private String name;
-    private int cost;
+    private double cost;
 
-    public Goods(String name, int cost) {
+    public Goods(String name, double cost) {
         this.name = name;
         this.cost = cost;
     }
@@ -17,7 +17,7 @@ public class Goods {
         this.name = name;
     }
 
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 

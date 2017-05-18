@@ -2,15 +2,16 @@ package shop;
 
 import java.util.ArrayList;
 
-public class Shop {
-    private String name;
-    private String addres;
-    private ArrayList<Goods> product;
+public class Shop{
+    static int cas = 0;//деньги в кассе
+    private String name;//название
+    private String addres;//адрес
+    private ArrayList<Goods> product;//список продуктов
 
-    public Shop(String name, String addres, ArrayList<Goods> product) {
+    public Shop(String name, String addres) {
         this.name = name;
         this.addres = addres;
-        this.product = product;
+        this.product = new ArrayList<>();
     }
 
     public String getName() {
@@ -36,6 +37,20 @@ public class Shop {
     public void setProduct(ArrayList<Goods> product) {
         this.product = product;
     }
-//todo реализовать методы Shop, обеспечивающие продажу товара, назначение цен, вывод списка и количества товара.
 
+    void arrivalGoods(String name, double cost){
+        product.add(new Goods(name, cost));
+    }
+
+    void sellProduct(){
+
+    }
+
+    void setPrice(){
+    }
+
+    void printProduct(){
+        System.out.print(product.size());
+    }
+//todo реализовать методы Shop, обеспечивающие продажу товара, назначение цен, вывод списка и количества товара.
 }
