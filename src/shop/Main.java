@@ -1,9 +1,20 @@
 package shop;
 
 public class Main {
-    public static void main(String[] args) {
-        Shop sh = new Shop("Pharmacy", "Pushkina 5");
-        sh.arrivalGoods("Analgin", 10.5);
+    public static void main(String[] args) throws Exception{
+        Shop sh = new Shop("Pharmasy", "Pushkina 3", 5);
+        Good g1 = new Good("Analgin", 17.8);
+        Good g2 = new Good("Aspirin", 24.6);
+        Good g3 = new Good("Coldrex", 160);
+        sh.arrivalGoods(g1);
+        sh.arrivalGoods(g2);
+        sh.arrivalGoods(g3);
+
+        sh.sellGoods(g1);
+        sh.sellGoods(g2);
+        //sh.sellGoods(g3);
+        //sh.sellGoods(g1);
         sh.printProduct();
+        System.out.println("Товаров в наличии " + sh.getCntGood() + " на сумму " + sh.getCash());
     }
 }

@@ -1,6 +1,6 @@
 package shop;
 
-public class Customer {
+public class Customer implements IMoneyTransaction{
     private String name;
     private String fio;
     private int age;
@@ -33,5 +33,10 @@ public class Customer {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public void transferMoney(IMoneyTransaction recipient, IMoneyTransaction donor, int amount) {
+        //Оставь пустым
     }
 }

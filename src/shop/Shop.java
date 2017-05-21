@@ -1,17 +1,17 @@
 package shop;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
-public class Shop{
-    static int cas = 0;//деньги в кассе
+public class Shop implements IMoneyTransaction{
     private String name;//название
-    private String addres;//адрес
-    private ArrayList<Goods> product;//список продуктов
+    private String address;//адрес
+    private Good[] goods;
+    private int money;
 
-    public Shop(String name, String addres) {
+    Shop(String name, String address, int lengh) {
         this.name = name;
-        this.addres = addres;
-        this.product = new ArrayList<>();
+        this.address = address;
+        this.goods = new Good[lengh];
     }
 
     public String getName() {
@@ -22,35 +22,94 @@ public class Shop{
         this.name = name;
     }
 
-    public String getAddres() {
-        return addres;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddres(String addres) {
-        this.addres = addres;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public ArrayList<Goods> getProduct() {
-        return product;
+    public void setGoods(Good[] goods) {
+        this.goods = goods;
     }
 
-    public void setProduct(ArrayList<Goods> product) {
-        this.product = product;
+    public Good[] getGoods() {
+        return goods;
     }
 
-    void arrivalGoods(String name, double cost){
-        product.add(new Goods(name, cost));
+    int getCntGood(){
+        int cnt = 0;
+        for (Good good : goods) {
+            if (good != null) cnt++;
+        }
+        return cnt;
     }
 
-    void sellProduct(){
-
+    void arrivalGoods(Good good) throws ShopIsFull{
+        if (getCntGood() < goods.length){
+        for (int i = 0; i < goods.length; i++){
+            if (goods[i] == null){
+                goods[i] = good;
+                break;
+            }}
+        }else throw new ShopIsFull();
     }
 
-    void setPrice(){
+    void sellGoods(Good good) throws ObjectIsMissing, GoodsEnded {
+        Good goodst = this.getGoodFromStock(good);
+
+        if (getCntGood() > 0) {
+            for (int i = 0; i < goods.length; i++) {
+                if (goods[i] == good) {
+                    goods[i] = null;
+                    break;
+                }
+            }
+        }else throw new GoodsEnded();
     }
 
     void printProduct(){
-        System.out.print(product.size());
+        for (Good good : goods) {
+            if (good != null) {
+                System.out.println(good.getName());
+    }}}
+
+    double getCash(){
+        int cnt = 0;
+        for (Good good: goods) {
+            if (good != null){ cnt += good.getCost();
+        }
+        }
+        //следующий кодовый блок аналогичен итератору выше
+        {Good good;
+        for (int i = 0; i < goods.length; i++) {
+            good = goods[i];
+            //code
+        }
+        }
+        /*
+        for (int i = 0; i < goods.length; i++) {
+            goods[i].getCost();
+
+        }*/
+        return cnt;
     }
-//todo реализовать методы Shop, обеспечивающие продажу товара, назначение цен, вывод списка и количества товара.
+
+    public Good getGoodFromStock(Good goodp) throws ObjectIsMissing{
+        for (Good good : goods) {
+            if (good.getName() == goodp.getName()){
+                return good;
+            }
+        }
+        throw new ObjectIsMissing();
+    }
+
+    @Override
+    public void transferMoney(IMoneyTransaction recipient, IMoneyTransaction donor, int amount) {
+
+    }
+
+//todo Связи пока только одна одностороняя Shop -> Good Помимо инкапсуляции полей, ожидаю методы Shop,
+//todo обеспечивающие продажу товара, назначение цен, вывод списка и количества товара.
 }
