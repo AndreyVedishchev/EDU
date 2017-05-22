@@ -1,7 +1,5 @@
 package shop;
 
-import java.util.Arrays;
-
 public class Good {
     private String name;
     private double cost;//Нельзя!

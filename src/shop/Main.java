@@ -10,10 +10,16 @@ public class Main {
         sh.arrivalGoods(g2);
         sh.arrivalGoods(g3);
 
-        sh.sellGoods(g1);
-        sh.sellGoods(g2);
+        //sh.sellGoods(g1);
+        //sh.sellGoods(g2);
         //sh.sellGoods(g3);
         //sh.sellGoods(g1);
+
+        sh.availability(g1);
+        sh.availability(g2);
+        sh.availability(g3);
+
+        System.out.println("---------------------------------------------------------------------------");
         sh.printProduct();
         System.out.println("Товаров в наличии " + sh.getCntGood() + " на сумму " + sh.getCash());
     }

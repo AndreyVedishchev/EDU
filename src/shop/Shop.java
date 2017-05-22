@@ -48,16 +48,16 @@ public class Shop implements IMoneyTransaction{
 
     void arrivalGoods(Good good) throws ShopIsFull{
         if (getCntGood() < goods.length){
-        for (int i = 0; i < goods.length; i++){
-            if (goods[i] == null){
-                goods[i] = good;
-                break;
-            }}
+            for (int i = 0; i < goods.length; i++){
+                if (goods[i] == null){
+                    goods[i] = good;
+                    break;
+                }}
         }else throw new ShopIsFull();
     }
 
     void sellGoods(Good good) throws ObjectIsMissing, GoodsEnded {
-        Good goodst = this.getGoodFromStock(good);
+        //Good goodst = this.getGoodFromStock(good);
 
         if (getCntGood() > 0) {
             for (int i = 0; i < goods.length; i++) {
@@ -73,43 +73,38 @@ public class Shop implements IMoneyTransaction{
         for (Good good : goods) {
             if (good != null) {
                 System.out.println(good.getName());
-    }}}
+            }}}
 
     double getCash(){
         int cnt = 0;
         for (Good good: goods) {
-            if (good != null){ cnt += good.getCost();
+            if (good != null) cnt += good.getCost();
         }
-        }
-        //следующий кодовый блок аналогичен итератору выше
-        {Good good;
-        for (int i = 0; i < goods.length; i++) {
-            good = goods[i];
-            //code
-        }
-        }
-        /*
-        for (int i = 0; i < goods.length; i++) {
-            goods[i].getCost();
-
-        }*/
         return cnt;
     }
 
-    public Good getGoodFromStock(Good goodp) throws ObjectIsMissing{
-        for (Good good : goods) {
-            if (good.getName() == goodp.getName()){
-                return good;
-            }
+    void availability(Good good){
+        for (int i = 0; i < goods.length; i++) {
+            if(goods[i].getName() == good.getName()){
+                System.out.println(good.getName()+" +++");break;
+            }else System.out.println(good.getName()+" ---");break;
         }
-        throw new ObjectIsMissing();
+        System.out.println(Arrays.toString(goods));
     }
+
+//    public Good getGoodFromStock(Good goodp) throws ObjectIsMissing{
+//        for (Good good : goods) {
+//            if (good.getName() == goodp.getName()){
+//                return good;
+//            }
+//        }
+//        throw new ObjectIsMissing();
+//    }
 
     @Override
     public void transferMoney(IMoneyTransaction recipient, IMoneyTransaction donor, int amount) {
 
     }
-
 //todo Связи пока только одна одностороняя Shop -> Good Помимо инкапсуляции полей, ожидаю методы Shop,
 //todo обеспечивающие продажу товара, назначение цен, вывод списка и количества товара.
 }
