@@ -7,9 +7,6 @@ import tasks.DateTime.DateTime;
  */
 public class Test {
     public static void main(String[] args) {
-        DateTime dt = new DateTime(2017,05,20,22,20,00,00);
-        //System.out.println(System.currentTimeMillis());
-        //dt.printRussianF();
         Spider sp = new Spider();
         //sp.en = Eniv.GROUND;
         sp.en = Eniv.WATER;

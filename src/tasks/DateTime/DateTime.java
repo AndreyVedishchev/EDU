@@ -1,66 +1,78 @@
 package tasks.DateTime;
 
 public class DateTime {
-    int yyyy, mm, dd, hh, mi, ss, ml;
 
-    final static int SECOND_IN_YEAR = 31557600;
-    final static int SECOND_IN_MONTH = 2629800;
-    final static int SECOND_IN_DAY = 86400;
-    final static int SECOND_IN_HOUR = 3600;
-    final static int SECOND_IN_MINUTE = 60;
-
-    final static double INDREX_FOR_YEAR = 60/60/24/30.4375/12;
-    final static double INDREX_FOR_MONTH = 60/60/24/30.4375;
-    final static double INDREX_FOR_DAY = 60/60/24;
-    final static double INDREX_FOR_HOUR = 60/60;
+    final static long MSECOND_IN_DAY = 86400000;
     long time;
+    int cnt = 1970;
 
     public DateTime(long time) {
         this.time = time;
     }
 
-    @Deprecated
-    public DateTime(int yyyy, int mm, int dd, int hh, int mi, int ss, int ml) {
-        this.yyyy = yyyy;
-        this.mm = mm;
-        this.dd = dd;
-        this.hh = hh;
-        this.mi = mi;
-        this.ss = ss;
-        this.ml = ml;
-    }
-
     //Конструктор из long 1495305987725
     //Точка отсчета 01.01.1970 00:00:00.0000
 
-    public double getYyyy() {
-        double i = time/60/60/24/30.4375/12;
-        return i;
+    public int getYear() {//возвращает наименование года
+        while (time > 0) {
+            if (cnt % 400 == 0 | cnt % 4 == 0) {//проверка на високосный год
+                time = time - (MSECOND_IN_DAY * 366);
+            } else {
+                time = time - (MSECOND_IN_DAY * 365);
+            }cnt++;
+        }cnt -= 1;
+        System.out.println(cnt);
+        return cnt;
     }
 
     public void foo() {
-        int getYearWhole = (int) getYyyy();
+        System.out.println(time);
+        int month = 0;
+        int index = 0;
+        if (cnt % 400 == 0 | cnt % 4 == 0) {
+            double restMsec = (MSECOND_IN_DAY * 366) + time;
+            double restDays = (restMsec/1000/60/60/24) + 1;
+//            if (restDays > 1 & restDays < 32) {month = 1; index = 0;}
+//            if (restDays > 31 & restDays < 60) {month = 2; index = 31;}
+//            if (restDays > 59 & restDays < 91) {month = 3; index = 59;}
+//            if (restDays > 90 & restDays < 121) {month = 4; index = 90;}
+//            if (restDays > 120 & restDays < 152) {month = 5; index = 120;}
+//            if (restDays > 152 & restDays < 182) {month = 6; index = 151;}
+//            if (restDays > 181 & restDays < 213) {month = 7; index = 181;}
+//            if (restDays > 212 & restDays < 244) {month = 8; index = 212;}
+//            if (restDays > 243 & restDays < 274) {month = 9; index = 243;}
+//            if (restDays > 273 & restDays < 305) {month = 10; index = 273;}
+//            if (restDays > 304 & restDays < 335) {month = 11; index = 304;}
+//            if (restDays > 334 & restDays < 366) {month = 12; index = 334;}
+        }else {
+            double restMsec = (MSECOND_IN_DAY * 365) + time;//прошло миллисекунд с начала года
+            double restDays = (restMsec/1000/60/60/24) + 1;//число дней с начала года
+            System.out.println(restDays);
+            if (restDays > 1 & restDays < 32) {month = 1; index = 0;}
+            if (restDays > 31 & restDays < 60) {month = 2; index = 31;}
+            if (restDays > 59 & restDays < 91) {month = 3; index = 59;}
+            if (restDays > 90 & restDays < 121) {month = 4; index = 90;}
+            if (restDays > 120 & restDays < 152) {month = 5; index = 120;}
+            if (restDays > 152 & restDays < 182) {month = 6; index = 151;}
+            if (restDays > 181 & restDays < 213) {month = 7; index = 181;}
+            if (restDays > 212 & restDays < 244) {month = 8; index = 212;}
+            if (restDays > 243 & restDays < 274) {month = 9; index = 243;}
+            if (restDays > 273 & restDays < 305) {month = 10; index = 273;}
+            if (restDays > 304 & restDays < 335) {month = 11; index = 304;}
+            if (restDays > 334 & restDays < 366) {month = 12; index = 334;}
 
-        double getMonth = (time - (getYearWhole * SECOND_IN_YEAR))/60/60/24/30.4375;
-        int getMonthWhole = (int) getMonth;
-
-        double getDay = ((getMonth * SECOND_IN_MONTH) - (getMonthWhole * SECOND_IN_MONTH))/60/60/24;
-        int getDayWhole = (int) getDay;
-
-        double getHours = ((getDay * SECOND_IN_DAY) - (getDayWhole * SECOND_IN_DAY))/60/60;
-        int getHoursWhole = (int) getHours;
-
-        double getMinutes = ((getHours * SECOND_IN_HOUR) - (getHoursWhole * SECOND_IN_HOUR))/60;
-        int getMinutesWhole = (int) getMinutes;
-
-        double getSeconds = (getMinutes * SECOND_IN_MINUTE) - (getMinutesWhole * SECOND_IN_MINUTE);
-        int getSecondsWhole = (int) getSeconds;
-
-        System.out.println(1970+getYearWhole+"  "+getMonthWhole+"  "+getDayWhole+"  "+getHoursWhole+"  "+getMinutesWhole+"  "+getSecondsWhole);
+            double date = restDays - index;//число
+            double hours = (date - (int)date) * 24;
+            System.out.println(cnt+" "+month+" "+date+" "+hours);
+        }
     }
 
     public static void main(String[] args) {
-        DateTime dt = new DateTime(System.currentTimeMillis()/1000);
+        DateTime dt = new DateTime(System.currentTimeMillis());
+        System.out.println(System.currentTimeMillis());
+        System.out.println();
+
+        dt.getYear();
         dt.foo();
     }
 }
