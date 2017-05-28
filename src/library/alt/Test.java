@@ -41,7 +41,7 @@ public class Test {
         //library.removeReader(reader[1]);
         library.removeReader(rdr);
         //reader[0].printLibrary();
-        //reader[0].printReaderBooklist();
+        reader[0].printReaderBooklist();
 
         System.out.println(library.getCntReader() + "    " + library.getCntBook());
     }
