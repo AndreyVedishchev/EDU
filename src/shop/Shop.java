@@ -57,16 +57,18 @@ public class Shop implements IMoneyTransaction{
     }
 
     void sellGoods(Good good) throws ObjectIsMissing, GoodsEnded {
-        //Good goodst = this.getGoodFromStock(good);
-
-        if (getCntGood() > 0) {
-            for (int i = 0; i < goods.length; i++) {
-                if (goods[i] == good) {
-                    goods[i] = null;
-                    break;
+        if (good == null) {
+            throw new ObjectIsMissing();
+        }else {
+            if (getCntGood() > 0) {
+                for (int i = 0; i < goods.length; i++) {
+                    if (goods[i] == good) {
+                        goods[i] = null;
+                        break;
+                    }
                 }
-            }
-        }else throw new GoodsEnded();
+            } else throw new GoodsEnded();
+        }
     }
 
     void printProduct(){
@@ -83,19 +85,10 @@ public class Shop implements IMoneyTransaction{
         return cnt;
     }
 
-    void availability(Good good){
-        for (int i = 0; i < goods.length; i++) {
-            if(goods[i].getName() == good.getName()){
-                System.out.println(good.getName()+" +++");break;
-            }else System.out.println(good.getName()+" ---");break;
-        }
-        System.out.println(Arrays.toString(goods));
-    }
-
 //    public Good getGoodFromStock(Good goodp) throws ObjectIsMissing{
-//        for (Good good : goods) {
-//            if (good.getName() == goodp.getName()){
-//                return good;
+//        for (int i = 0; i < goods.length; i++) {
+//            if (goodp.getName() == goods[i].getName()){
+//                return goodp;
 //            }
 //        }
 //        throw new ObjectIsMissing();
