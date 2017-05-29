@@ -8,8 +8,4 @@ public class Crap {
     Crap(String s){
         this.s = s;
     }
-
-    void PrintSMTH(){
-        System.out.println("I am Crap");
-    }
 }

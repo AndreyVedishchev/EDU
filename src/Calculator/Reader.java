@@ -4,16 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-    public class Reader extends JFrame{
-        JButton b1, b2;
-        JLabel l1, l2, l3, l4;
-        JTextField t1, t2;
-        int i, k;
-        String a, b, numS = "0";
-        eHandler handler = new eHandler();
-        JButton arrayButton[];
+public class Reader extends JFrame {
+    JButton b1, b2;
+    JLabel l1, l2, l3, l4;
+    JTextField t1, t2;
+    int i, k;
+    String a, b, numS = "0";
+    eHandler handler = new eHandler();
+    JButton arrayButton[];
 
-    public Reader(String s){
+    public Reader(String s) {
         super(s);
         setLayout(new FlowLayout());
         arrayButton = new JButton[16];
@@ -37,46 +37,52 @@ import java.awt.event.*;
         add(t1);
         for (int r = 0; r < arrayButton.length; r++) {
             add(arrayButton[r]);
-            //arrayButton[r].addActionListener(handler);
+            arrayButton[r].addActionListener(handler);
         }
 
-        arrayButton[0].addActionListener(handler);
+//        arrayButton[14].addActionListener(handler);
+//        arrayButton[0].addActionListener(handler);
         //b2.addActionListener(handler);
         //b1.addActionListener(handler);
     }
 
-    public class eHandler implements ActionListener{
+    public class eHandler implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
-            if(e.getSource()==arrayButton[0]){
+            if (e.getSource() == arrayButton[0]) {
                 numS = Calc.count(numS, 0);
                 double numOut = Double.parseDouble(numS);
-                if(numOut - (int)numOut!=0){
-                    l1.setText(Double.toString(numOut));
-                }else{
-                    i = (int)numOut;
-                    l1.setText(Integer.toString(i));
+                if (numOut - (int) numOut != 0) {
+                    t1.setText(Double.toString(numOut));
+                } else {
+                    i = (int) numOut;
+                    t1.setText(Integer.toString(i));//переводим число в текст
                 }
+            }
 
-           // try{
-                if(e.getSource() == b2){
-                    i = Integer.parseInt(t1.getText());
-                    k = Integer.parseInt(t2.getText());
-                    i++;
-                    k++;
-                    a = "Ваше первое число теперь равно " + i;
-                    b = "Ваше второе число теперь равно " + k;
-                    l3.setText(a);
-                    l4.setText(b);
-                }
 
-                if(e.getSource() == b1){
-                    t1.setText(null);
-                    t2.setText(null);
-                    l3.setText("");
-                    l4.setText("");
-                }
-            }//catch (Exception ex){ JOptionPane.showMessageDialog(null, "Введите в поле число"); }
+            if (e.getSource() == arrayButton[1]) {
+                t1.setText("1");
+                i = Integer.parseInt(t1.getText());
+                //t1.setText(Integer.toString(i));
+            }
+
+                //try{
+            if (e.getSource() == b2) {
+                i = Integer.parseInt(t1.getText());//переводим текст в число
+                k = Integer.parseInt(t2.getText());
+                i++;
+                k++;
+                a = "Ваше первое число теперь равно " + i;//переводим число в текст
+                b = "Ваше второе число теперь равно " + k;
+                l3.setText(a);
+                l4.setText(b);
+            }
+
+            if (e.getSource() == arrayButton[14]) {
+                t1.setText(null);
+            }
+            //catch (Exception ex){ JOptionPane.showMessageDialog(null, "Введите в поле число"); }
         }
     }
 }
