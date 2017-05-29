@@ -8,12 +8,12 @@ import library.alt.Reader;
 public class Test {
     public static void main (String[] args) {
         Crap crap = new Crap("SMTH");
-        Crap2 crap2 = new Crap2();
-        crap = crap2;
+        //Crap2 crap2 = new Crap2();
+        //crap = crap2;
 
-        if(crap instanceof Crap2){
+        //if(crap instanceof Crap2){
             System.out.println("YES");
-        } else System.out.println("NO");
+        //} else System.out.println("NO");
 
 
         String s1 = "Test";
