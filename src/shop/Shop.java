@@ -1,7 +1,5 @@
 package shop;
 
-import java.util.Arrays;
-
 public class Shop implements IMoneyTransaction{
     private String name;//название
     private String address;//адрес
@@ -34,10 +32,6 @@ public class Shop implements IMoneyTransaction{
         this.goods = goods;
     }
 
-    public Good[] getGoods() {
-        return goods;
-    }
-
     int getCntGood(){
         int cnt = 0;
         for (Good good : goods) {
@@ -57,18 +51,17 @@ public class Shop implements IMoneyTransaction{
     }
 
     void sellGoods(Good good) throws ObjectIsMissing, GoodsEnded {
-        if (good == null) {
-            throw new ObjectIsMissing();
-        }else {
-            if (getCntGood() > 0) {
-                for (int i = 0; i < goods.length; i++) {
-                    if (goods[i] == good) {
-                        goods[i] = null;
-                        break;
-                    }
-                }
-            } else throw new GoodsEnded();
-        }
+        if (getCntGood() > 0) {
+            for (int j = 0; j < goods.length; j++) {
+                if (goods[j] == good) {
+                    goods[j] = null;
+                    good.setName(null);
+                    break;
+                }else {
+                    if (good.getName() == null) {
+                      throw new ObjectIsMissing();
+                    }}}
+        } else throw new GoodsEnded();
     }
 
     void printProduct(){
@@ -85,19 +78,7 @@ public class Shop implements IMoneyTransaction{
         return cnt;
     }
 
-//    public Good getGoodFromStock(Good goodp) throws ObjectIsMissing{
-//        for (int i = 0; i < goods.length; i++) {
-//            if (goodp.getName() == goods[i].getName()){
-//                return goodp;
-//            }
-//        }
-//        throw new ObjectIsMissing();
-//    }
-
     @Override
     public void transferMoney(IMoneyTransaction recipient, IMoneyTransaction donor, int amount) {
-
     }
-//todo Связи пока только одна одностороняя Shop -> Good Помимо инкапсуляции полей, ожидаю методы Shop,
-//todo обеспечивающие продажу товара, назначение цен, вывод списка и количества товара.
 }

@@ -2,9 +2,9 @@ package shop;
 
 public class Good {
     private String name;
-    private double cost;//Нельзя!
+    private int cost;
 
-    Good(String name, double cost) {
+    Good(String name, int cost) {
         this.name = name;
         this.cost = cost;
     }
@@ -13,7 +13,7 @@ public class Good {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 
