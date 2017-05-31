@@ -51,17 +51,21 @@ public class Shop implements IMoneyTransaction{
     }
 
     void sellGoods(Good good) throws ObjectIsMissing, GoodsEnded {
+        boolean flag = false;
         if (getCntGood() > 0) {
             for (int j = 0; j < goods.length; j++) {
                 if (goods[j] == good) {
                     goods[j] = null;
-                    good.setName(null);
+                    flag = true;
+                    //good.setName(null); todo убрать!
                     break;
-                }else {
-                    if (good.getName() == null) {
-                      throw new ObjectIsMissing();
-                    }}}
+                }
+            }
         } else throw new GoodsEnded();
+
+        if (!flag){
+            throw new ObjectIsMissing();
+        }
     }
 
     void printProduct(){

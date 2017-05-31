@@ -20,7 +20,7 @@ public class Good {
     public String getName() {
         return name;
     }
-
+    @Deprecated
     public void setName(String name) {
         this.name = name;
     }

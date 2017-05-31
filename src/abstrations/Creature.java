@@ -5,6 +5,8 @@ package abstrations;
  */
 public abstract class Creature {
     int age;
-    Eniv en;//перечелсление среды обитание
+    //private Eniv en;//перечелсление среды обитание //сложный
+    protected Eniv en; // легкий
+    /* TODO организавать досутп к en  из Human & Spider*/
 
 }
