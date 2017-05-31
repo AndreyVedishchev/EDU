@@ -3,34 +3,65 @@ package tasks.DateTime;
 public class DateTime {
 
     final static long MSECOND_IN_DAY = 86400000;
-    long time;
+    long time; // число мс с момента 01.01.1970
+    int days; // число суток с момента 01.01.1970
+    int restSec; //"дробная часть"
     int cnt = 1970;
 
     public DateTime(long time) {
         this.time = time;
+        this.days = (int) Math.floor((double) (time/MSECOND_IN_DAY));
+
     }
 
     //Конструктор из long 1495305987725
     //Точка отсчета 01.01.1970 00:00:00.0000
-
-    public int getYear() {//возвращает год
+    @Deprecated
+    public int getYear_() {//возвращает год
+        /*
         while (time > 0) {
-            if (cnt % 400 == 0 | cnt % 4 == 0) {//проверка на високосный год
+            if (cnt % 4 == 0 && (cnt % 100 > 0 || cnt % 400 == 0)) {//проверка на високосный год
                 time -= (MSECOND_IN_DAY * 366);
             } else {
                 time -= (MSECOND_IN_DAY * 365);
             }cnt++;
         }cnt -= 1;
+        */
+
+        do {
+            cnt++;
+            if (cnt % 4 == 0 && (cnt % 100 > 0 || cnt % 400 == 0)) {//проверка на високосный год
+                time -= (MSECOND_IN_DAY * 366);
+            } else {
+                time -= (MSECOND_IN_DAY * 365);
+            }
+        } while (time > 0);
+        return cnt;
+    }
+    public int getYear() {//возвращает год
+
+        do {
+
+            if (cnt % 4 == 0 && (cnt % 100 > 0 || cnt % 400 == 0)) {//проверка на високосный год
+                days -= 366;
+            } else {
+                days -= 365;
+            }
+            cnt++;
+        } while (days > 0);
+
         return cnt;
     }
 
+
+    @Deprecated
     public void foo() {
 
         int month = 0;
         int index = 0;
         double restDays;
 
-        if (cnt % 400 == 0 | cnt % 4 == 0) {
+        if ( cnt % 4 == 0 && (cnt % 100 > 0 || cnt % 400 == 0)) {
             double restMsec = (MSECOND_IN_DAY * 366) + time;
             restDays = (restMsec/1000/60/60/24) + 1;
             if (restDays > 1 & restDays < 32) {month = 1; index = 0;}
@@ -72,7 +103,8 @@ public class DateTime {
     public static void main(String[] args) {
         DateTime dt = new DateTime(System.currentTimeMillis());
         System.out.println(System.currentTimeMillis());
-        dt.getYear();
-        dt.foo();
+        System.out.println(dt.getYear());
+        //System.out.println(dt.days);
+        //System.out.println((int) dt.time);
     }
 }
