@@ -6,16 +6,16 @@ public class Main {
         Good g1 = new Good("Analgin", 17);
         Good g2 = new Good("Aspirin", 24);
         Good g3 = new Good("Coldrex", 160);
-        System.out.println(g1.getName());
+
         sh.arrivalGoods(g1);
-        //sh.arrivalGoods(g2);
-        //sh.arrivalGoods(g3);
+        sh.arrivalGoods(g2);
+        sh.arrivalGoods(g3);
 
         sh.sellGoods(g1);
-        //sh.sellGoods(g2);
-        //sh.sellGoods(g3);
-        //sh.sellGoods(g2);
-        System.out.println(g1.getName());
+        sh.sellGoods(g2);
+        sh.sellGoods(g3);
+        //sh.sellGoods(g1);
+
         System.out.println("---------------------------------------------------------------------------");
         sh.printProduct();
         System.out.println("Товаров в наличии " + sh.getCntGood() + " на сумму " + sh.getCash());

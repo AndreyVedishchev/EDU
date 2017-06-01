@@ -8,20 +8,11 @@ public class Good {
         this.name = name;
         this.cost = cost;
     }
-
     public double getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
-
     public String getName() {
         return name;
-    }
-    @Deprecated
-    public void setName(String name) {
-        this.name = name;
     }
 }

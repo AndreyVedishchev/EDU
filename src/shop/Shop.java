@@ -57,7 +57,6 @@ public class Shop implements IMoneyTransaction{
                 if (goods[j] == good) {
                     goods[j] = null;
                     flag = true;
-                    //good.setName(null); todo убрать!
                     break;
                 }
             }
