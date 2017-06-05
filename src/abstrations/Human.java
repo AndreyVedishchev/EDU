@@ -5,6 +5,11 @@ package abstrations;
  */
 public class Human extends  Mammals {
     public Human(){
-        en = Eniv.GROUND;
+        super();
+        this.en = Eniv.GROUND;
+    }
+
+    public Eniv getEn() {
+        return en;
     }
 }

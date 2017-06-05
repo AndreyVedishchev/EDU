@@ -1,7 +1,5 @@
 package abstrations;
 
-import sun.security.provider.ConfigFile;
-
 public class Spider extends Arthropods{
     Webs web;
 

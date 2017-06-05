@@ -9,4 +9,11 @@ public abstract class Creature {
     protected Eniv en; // легкий
     /* TODO организавать досутп к en  из Human & Spider*/
 
+    public int getAge() {
+        return age;
+    }
+
+    public Eniv getEn() {
+        return en;
+    }
 }
