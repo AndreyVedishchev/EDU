@@ -9,6 +9,7 @@ public class Human extends  Mammals {
         this.en = Eniv.GROUND;
     }
 
+
     public Eniv getEn() {
         return en;
     }

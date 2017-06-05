@@ -9,6 +9,7 @@ public class Spider extends Arthropods{
         this.en = Eniv.GROUND;
     }
 
+
     public Eniv getEn() {
         return en;
     }

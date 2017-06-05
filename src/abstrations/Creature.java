@@ -13,6 +13,7 @@ public abstract class Creature {
         return age;
     }
 
+
     public Eniv getEn() {
         return en;
     }

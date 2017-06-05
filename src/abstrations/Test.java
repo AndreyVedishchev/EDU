@@ -8,8 +8,10 @@ public class Test {
         compareEniv(hm, Eniv.GROUND);
     }
 
+
     public static void compareEniv(Creature cr, Eniv en){
         if (cr.en == en) System.out.println("Eniv is same!");
         else System.out.println("Eniv is different");
     }
+
 }

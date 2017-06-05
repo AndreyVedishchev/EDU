@@ -5,5 +5,4 @@ package abstrations;
  */
 public abstract class Arthropods extends Creature{
     byte limbs;
-
 }
