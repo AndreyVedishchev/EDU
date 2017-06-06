@@ -1,16 +1,20 @@
 package abstrations;
 
 public class Spider extends Arthropods{
-    Webs web;
+    private Webs web;
 
-
-    public Spider(){
-        super();
-        this.en = Eniv.GROUND;
+    public Spider(int age, byte limbs, Webs web) {
+        super(age, Eniv.GROUND, limbs);
+        this.web = web;
     }
 
-
-    public Eniv getEn() {
-        return en;
+    public void spiderDance(){
+        System.out.println("Dancing!!");
     }
+
+    @Override
+    public void move() {
+        System.out.println("Spider moves with all his legs");
+    }
+
 }

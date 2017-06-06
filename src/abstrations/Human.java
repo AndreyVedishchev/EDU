@@ -4,13 +4,14 @@ package abstrations;
  * Created by User on 31.05.2017.
  */
 public class Human extends  Mammals {
-    public Human(){
-        super();
-        this.en = Eniv.GROUND;
+
+
+    protected Human(int age, Eniv en) {
+        super(age, en);
     }
 
+    @Override
+    public void move() {
 
-    public Eniv getEn() {
-        return en;
     }
 }

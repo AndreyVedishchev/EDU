@@ -11,6 +11,7 @@ public class A1 {
 
     public A1(float hhh, int oio) {
         this.hhh = hhh;
+
         this.oio = oio;
     }
 }

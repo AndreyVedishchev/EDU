@@ -5,4 +5,7 @@ package abstrations;
  */
 public abstract class Mammals extends Creature{
 
+    protected Mammals(int age, Eniv en) {
+        super(age, en);
+    }
 }
