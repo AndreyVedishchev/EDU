@@ -1,13 +1,14 @@
 package abstrations;
 
-/**
- * Created by User on 31.05.2017.
- */
 public class Human extends  Mammals {
 
+    private String name;
+    private int height;
 
-    protected Human(int age, Eniv en) {
-        super(age, en);
+    public Human(int age, String name, int height, Limbs limbs) {
+        super(age, Eniv.GROUND, limbs);
+        this.name = name;
+        this.height = height;
     }
 
     @Override

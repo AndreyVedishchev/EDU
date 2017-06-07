@@ -4,7 +4,7 @@ import abstrations.*;
 
 /*
 * TODO
-* новые аттрибуты для человека
+* новые аттрибуты для человека+
 * новые классы насекомые(абстр), пчелы, муравьи
 * byte climbs перенести в Creature и заменинть отдельным классом
 * добавить метод sound() в Creature - извдавть звук
@@ -16,14 +16,14 @@ import abstrations.*;
 public class Main {
     public static void main(String[] args) {
         Creature[] zoo = new Creature[4];
-        zoo[0] = new Spider(1,(byte) 8, Webs.MEDIUM);
-        zoo[1] = new Gorilla(20, Eniv.GROUND);
+        zoo[0] = new Spider(1, Webs.MEDIUM, new Limbs(8, 2));
+        zoo[1] = new Gorilla(20, new Limbs(4, 150));
         move(zoo);
-        zoo[2] = new Spider(3,(byte) 8 , Webs.SMALL);
+        zoo[2] = new Spider(3, Webs.SMALL, new Limbs(8));
         zoo[2].move();
         Object[] arr = new Object[12];
         arr[0] = zoo[1];
-
+        Human h = new Human(23, "Sasha", 150, new Limbs(2, 80));
     }
 
     static void printEniv(Creature ob){
@@ -34,16 +34,4 @@ public class Main {
         for (Creature creature : arr) {
             if (creature != null) {
                 creature.move();
-            }
-
-        }
-//        for (int i = 0; i < arr.length ; i++) {
-//            arr[i].move();
-//            //arr[i] === creature
-//        }
-    }
-
-
-
-
-}
+            }}}}

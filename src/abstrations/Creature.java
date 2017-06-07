@@ -1,17 +1,15 @@
 package abstrations;
 
-/**
- * Created by User on 20.05.2017.
- */
 public abstract class Creature {
     private int age;
-    private Climbs clmbs;
+    private Limbs limbs;
     private Eniv en;//перечелсление среды обитание //сложный
     //protected Eniv en; // легкий
 
-    public Creature(int age, Eniv en) {
+    public Creature(int age, Eniv en, Limbs limbs) {
         this.age = age;
         this.en = en;
+        this.limbs = limbs;
     }
 
     public int getAge() {
