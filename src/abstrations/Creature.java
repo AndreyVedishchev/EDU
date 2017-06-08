@@ -16,11 +16,11 @@ public abstract class Creature {
         return age;
     }
 
-
-
     public Eniv getEn() {
         return en;
     }
 
     public abstract void move();
+
+    public abstract void sound();
 }

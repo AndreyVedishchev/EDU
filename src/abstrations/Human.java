@@ -15,4 +15,9 @@ public class Human extends  Mammals {
     public void move() {
 
     }
+
+    @Override
+    public void sound() {
+        System.out.println("Болтаю не по детски");
+    }
 }

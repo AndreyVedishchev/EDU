@@ -6,8 +6,6 @@ public class Spider extends Arthropods{
     public Spider(int age, Webs web, Limbs limbs) {
         super(age, Eniv.GROUND, limbs);
         this.web = web;
-        //limbs = new Limbs(8);
-
     }
 
     public void spiderDance(){
@@ -19,4 +17,8 @@ public class Spider extends Arthropods{
         System.out.println("Spider moves with all his legs");
     }
 
+    @Override
+    public void sound() {
+        System.out.println("Я лучше побегаю))");
+    }
 }

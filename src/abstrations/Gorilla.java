@@ -10,4 +10,9 @@ public class Gorilla extends Mammals {
     public void move() {
         System.out.println("Gorilla climbs skyscrapper with small blonde girl");
     }
+
+    @Override
+    public void sound() {
+        System.out.println("У-а-а");
+    }
 }
