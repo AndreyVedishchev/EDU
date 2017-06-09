@@ -16,8 +16,8 @@ public class TwoSum {
             for (int i = 0; i < nums.length; i++) {
                 for (int j = 0; j < nums.length; j++) {
                     if (nums[i] + nums[j] == target) {
-                        nums1[0] = nums[i];
-                        nums1[1] = nums[j];
+                        nums1[0] = i;
+                        nums1[1] = j;
                     }
                 }break;
             }
