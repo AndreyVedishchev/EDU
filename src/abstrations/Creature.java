@@ -16,6 +16,10 @@ public abstract class Creature {
         return age;
     }
 
+    public Limbs getLimbs() {
+        return limbs;
+    }
+
     public Eniv getEn() {
         return en;
     }
