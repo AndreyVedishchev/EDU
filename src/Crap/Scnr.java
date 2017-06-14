@@ -1,11 +1,14 @@
 package Crap;
 
-
-
 public class Scnr {
-    public static void main(String[] args) {
 
-        int b = 381;
+    static int abs(int x) {
+        return x;
+    }
 
-        System.out.println("b равно " + (byte)b+" "+b);
-    }}
+    public static void main(String args[]){
+        Scnr scnr = new Scnr();
+
+        System.out.println(scnr.abs(00100));
+    }
+}
