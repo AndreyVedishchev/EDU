@@ -7,7 +7,7 @@ public class ReverseInteger {
 
     public static void main(String[] args) {
         ReverseInteger reverseInteger = new ReverseInteger();
-        System.out.println(reverseInteger.rev(1200));
+        System.out.println(reverseInteger.rev(1230));
 
     }
 
@@ -23,11 +23,13 @@ public class ReverseInteger {
 //        return result;
         StringBuffer stringBuffer = new StringBuffer(Integer.toString(x));
         String res = String.valueOf(stringBuffer.reverse());
+        System.out.println(res);
         char []arr = res.toCharArray();
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(Integer.parseInt(String.valueOf(arr[i])));
+            //System.out.print(Integer.parseInt(String.valueOf(arr[i])));
+            //System.out.println();
         }
-        return result;
+        return Integer.parseInt(String.valueOf(arr));
     }
 
 }
