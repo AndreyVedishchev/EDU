@@ -34,6 +34,6 @@ public class Test {
         } else System.out.println("NO");
 
 
-        System.out.println(0b100011111);
+        System.out.println(101);
     }
 }

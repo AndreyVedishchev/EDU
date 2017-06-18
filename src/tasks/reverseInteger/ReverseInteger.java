@@ -6,12 +6,13 @@ import java.io.*;
 public class ReverseInteger {
 
     public static void main(String[] args) {
-        ReverseInteger reverseInteger = new ReverseInteger();
-        System.out.println(reverseInteger.rev(1230));
+
+        System.out.println(rev(-1230));
 
     }
+    //321
 
-    public int rev(int x) {
+    public static int rev(int x) {
         int result = 0;
 //        try {
 //            StringBuffer stringBuffer = new StringBuffer(Integer.toString(x));
@@ -21,15 +22,18 @@ public class ReverseInteger {
 //            System.out.println("Возвращаемое значение выходит за пределы Integer");
 //        }
 //        return result;
-        StringBuffer stringBuffer = new StringBuffer(Integer.toString(x));
-        String res = String.valueOf(stringBuffer.reverse());
-        System.out.println(res);
+        int a = 0;
+        int b = '0';
+        System.out.println(a);//0
+        System.out.println(b);//48
+        String res = Integer.toString(x);
         char []arr = res.toCharArray();
-        for (int i = 0; i < arr.length; i++) {
-            //System.out.print(Integer.parseInt(String.valueOf(arr[i])));
-            //System.out.println();
+        for (int i = arr.length - 1; i >= 0; i--) {
+            System.out.println("arr[" + i + "] = " + arr[i]);
+            a += (arr[i] - 48) * Math.pow(10, i);
+
         }
-        return Integer.parseInt(String.valueOf(arr));
+        return a;
     }
 
 }

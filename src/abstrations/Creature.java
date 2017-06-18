@@ -1,7 +1,8 @@
 package abstrations;
 
-public abstract class Creature {
+public abstract class Creature implements ISound, IMove {
     private int age;
+
     private Limbs limbs;
     private Eniv en;//перечелсление среды обитание //сложный
     //protected Eniv en; // легкий
@@ -24,7 +25,10 @@ public abstract class Creature {
         return en;
     }
 
+    @Override
     public abstract void move();
 
+    @Override
     public abstract void sound();
+
 }
