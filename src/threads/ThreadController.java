@@ -1,57 +1,36 @@
 package threads;
 
+
+
+/**
+ * Created by User on 20.05.2017.
+ */
 public class ThreadController {
 
     public static void main(String args[]) throws InterruptedException {
+        //как-то запускается решение Васи в потоке 1
+        //Запускается моё решение в потоке 2
+        MySolution ms = new MySolution();
+        VasyaSolution vs = new VasyaSolution();
+        MySolution ms2 = new MySolution();
+        //Thread.sleep(3000); //snooze thread main for 3 sec!
 
-        class MySolution implements Runnable {
-            @Override
-            public void run(){
-                int i = 0;
-                for ( ; ; ){
-                    System.out.print("второй "+i);
-                    try {
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    i++;
-                    if (i > 9) break;
-                }
-            }
-        }
+        Thread t1 = new Thread(ms);
+        Thread t2 = new Thread(ms2);
 
-        class VasyaSolution implements Runnable {
-            @Override
-            public void run() {
-                int i = 0;
-                for ( ; ; ){
-                    System.out.println("третий "+i);
-                    try {
-                        Thread.sleep(1);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    i++;
-                    if (i > 10) break;
-                }
-            }
-        }
-
-
-        Thread t1 = new Thread(new MySolution());
-        Thread t2 = new Thread(new VasyaSolution());
 
         t1.start();
         t2.start();
-
+        //Thread.sleep(1000);
         int i = 0;
-        for ( ; ; ){
-            System.out.print("первый "+0);
-            Thread.sleep(1000);
+        for ( ; ;  ){
             i++;
-            if (i > 3) break;
+            if(i>100) break;
+
         }
+
+
+        System.out.println("main");
 
         //todo 3 threads of one class; each outputs one digit 0-9
 
