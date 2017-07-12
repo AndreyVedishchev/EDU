@@ -2,28 +2,18 @@ package threads;
 
 public class ThreadController {
     public static void main(String args[]) throws InterruptedException {
-        new ThreadForNumbers(10000, "1", false);
-        new ThreadForNumbers(1000, "2", false);
-        new ThreadForNumbers(100,"3", true);
+        Statistics statistics = new Statistics();
 
-
-
-        //todo 3 threads of one class; each outputs one digit 0-9
-
-        /*ex 0-3
-          (I thrd, II thrd, III thrd)
-        * 000
-        *   1
-        *   2
-        *   3
-        *  10
-        *   1
-        *   2
-        *   3
-        *  20
-        *   1
-        *   2
-        *
-        * */
+        ThreadConcurency t1 = new ThreadConcurency("1", statistics);
+        ThreadConcurency t2 = new ThreadConcurency("2", statistics);
+        ThreadConcurency t3 = new ThreadConcurency("3", statistics);
+        ThreadConcurency t4 = new ThreadConcurency("4", statistics);
+        ThreadConcurency t5 = new ThreadConcurency("5", statistics);
+        t1.thread.join();
+        t2.thread.join();
+        t3.thread.join();
+        t4.thread.join();
+        t5.thread.join();
+        //System.out.println(statistics.getCnt());
     }
 }
