@@ -12,6 +12,7 @@ public class ArrayDemoMT_Edition implements Runnable {
     ArrayDemoMT_Edition(){
         new Thread(this).start();
     }
+
     public void run() {
         String[] str = {"John","Peter","Dana",null,"Ivan","Andrew","William","","Vladimir","","Tatyana"};
         /*

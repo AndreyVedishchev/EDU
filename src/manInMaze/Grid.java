@@ -26,6 +26,7 @@ public class Grid extends Applet implements MouseListener {
 
     public void paint(Graphics g) {
         g.drawString(msg, x, y);
+        g.drawString(new Long(System.currentTimeMillis()).toString(), 10, 10);
     }
 
     public Grid() {
@@ -67,7 +68,7 @@ public class Grid extends Applet implements MouseListener {
         if (e.getX() > x) x++;
         if (e.getY() < y) y--;
         if (e.getY() > y) y++;
-        msg = "1";
+        msg = "o";
         repaint();
     }
 
