@@ -18,16 +18,16 @@ public class ThreadForNumbers implements Runnable {
     @Override
     public void run() {
         int i = 0;
-        for ( ; ; ){
-            System.out.print(i);
+        for ( ;i < 100 ; i++ ){
+            System.out.print(i +  " ");
             if (printCR) System.out.println();
             try {
                 Thread.sleep(delay);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+
             }
-            i++;
-            if (i > 9) i -= 10;
         }
+        System.out.println("Поток " + thread + " завершился");
     }
 }

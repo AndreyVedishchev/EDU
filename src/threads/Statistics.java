@@ -5,8 +5,6 @@ package threads;
  */
 public class Statistics {
     private int cnt = 0;
-    private int cnt2 = 0;
-    private int cnt3 = 0;
 
     public int getCnt() {
         return cnt;
@@ -26,19 +24,4 @@ public class Statistics {
 
     }
 
-    public int getCnt2() {
-        return cnt2;
-    }
-
-    public void incCnt2() {
-        cnt2++;
-    }
-
-    public int getCnt3() {
-        return cnt3;
-    }
-
-    public void incCnt3() {
-        cnt3++;
-    }
 }
