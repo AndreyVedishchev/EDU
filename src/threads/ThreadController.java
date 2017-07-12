@@ -9,11 +9,10 @@ public class ThreadController {
                 for ( ; ; ){
                     System.out.print("(2)"+i+" ");
                     try {
-                        Thread.sleep(500);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-
                     i++;
                     if (i > 9) break;
                 }
@@ -23,16 +22,18 @@ public class ThreadController {
         class VasyaSolution implements Runnable {
             @Override
             public void run() {
+                for (int p = 0; p < 10; p++){
                     try {
-                        Thread.sleep(505);
+                        Thread.sleep(950);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                int i = 0;
-                for ( ; ; ){
-                    System.out.println("(3)"+i+" ");
-                    i++;
-                    if (i > 9) break;
+                    int i = 0;
+                    for ( ; ; ) {
+                        System.out.println("(3)" + i + " ");
+                        i++;
+                        if (i > 9) break;
+                    }
                 }
             }
         }
@@ -41,13 +42,12 @@ public class ThreadController {
         Thread t2 = new Thread(new VasyaSolution());
 
         t1.start();
-        //t2.start();
+        t2.start();
 
         int i = 0;
         for ( ; ; ){
             System.out.print("(1)"+0+" ");
-            //t2.start();
-            Thread.sleep(490);
+            Thread.sleep(990);
             i++;
             if (i > 9) break;
         }
