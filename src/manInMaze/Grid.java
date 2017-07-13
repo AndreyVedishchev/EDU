@@ -4,21 +4,18 @@ import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
-/**
- * Created by User on 26.04.2017.
- */
 /*
     <applet code="Grid" width=500 height=500>
     </applet>
  */
-public class Grid extends Applet implements MouseListener {
+public class Grid extends Applet implements MouseListener, Runnable {
     private Man man;
     private Monster monster;
     private Wall wall;
     private String msg = "?";
     private int x = 200;
     private int y = 200;
+    Thread thread;
 
     public void init(){
         addMouseListener(this); //добавили слушателя
@@ -26,16 +23,19 @@ public class Grid extends Applet implements MouseListener {
 
     public void paint(Graphics g) {
         g.drawString(msg, x, y);
-        g.drawString(new Long(System.currentTimeMillis()).toString(), 10, 10);
+        g.drawString(Long.toString(System.currentTimeMillis()), 10, 10);
     }
 
     public Grid() {
 
     }
+
     public Grid(Man man, Monster monster, Wall wall) throws HeadlessException {
         this.man = man;
         this.monster = monster;
         this.wall = wall;
+        this.thread = new Thread(this);
+        this.thread.start();
     }
 
     public void setMan(Man man) {
@@ -89,6 +89,11 @@ public class Grid extends Applet implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void run() {
 
     }
 }

@@ -1,8 +1,5 @@
 package manInMaze;
 
-/**
- * Created by User on 26.04.20170
- */
 public class Entity {
     protected int x, y;
     protected int hits;

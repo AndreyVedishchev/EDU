@@ -5,7 +5,5 @@ public class ThreadController {
         new ArrayDemoMT_Edition();
         new ArrayDemoMT_Edition();
 
-
-
     }
 }
