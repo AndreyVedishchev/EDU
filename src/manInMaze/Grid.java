@@ -4,11 +4,13 @@ import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.AttributedCharacterIterator;
+
 /*
     <applet code="Grid" width=500 height=500>
     </applet>
  */
-public class Grid extends Applet implements MouseListener, Runnable {
+public class Grid extends Applet implements MouseListener {
     private Man man;
     private Monster monster;
     private Wall wall;
@@ -16,26 +18,20 @@ public class Grid extends Applet implements MouseListener, Runnable {
     private int x = 200;
     private int y = 200;
     Thread thread;
+    Clock clock;
 
-    public void init(){
-        addMouseListener(this); //добавили слушателя
-    }
-
-    public void paint(Graphics g) {
-        g.drawString(msg, x, y);
-        g.drawString(Long.toString(System.currentTimeMillis()), 10, 10);
-    }
-
-    public Grid() {
-
+    public Grid() throws HeadlessException {
+        //this.clock = new Clock();
     }
 
     public Grid(Man man, Monster monster, Wall wall) throws HeadlessException {
         this.man = man;
         this.monster = monster;
         this.wall = wall;
-        this.thread = new Thread(this);
-        this.thread.start();
+        //this.thread = new Thread(this);
+        //this.thread.start();
+        this.clock = new Clock();
+        //new Thread(clock);
     }
 
     public void setMan(Man man) {
@@ -60,6 +56,15 @@ public class Grid extends Applet implements MouseListener, Runnable {
 
     public Wall getWall() {
         return wall;
+    }
+
+    public void init(){
+        addMouseListener(this); //добавили слушателя
+    }
+
+    public void paint(Graphics g) {
+        g.drawString(msg, x, y);
+        //g.drawString(clock.time, 10, 10);
     }
 
     @Override
@@ -89,11 +94,6 @@ public class Grid extends Applet implements MouseListener, Runnable {
 
     @Override
     public void mouseExited(MouseEvent e) {
-
-    }
-
-    @Override
-    public void run() {
 
     }
 }
