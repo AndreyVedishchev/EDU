@@ -11,7 +11,6 @@ public class Clock extends Applet implements Runnable {
 
     @Override
     public void run() {
-        repaint();
         while (true) {
             time = Long.toString(System.currentTimeMillis());
         }
