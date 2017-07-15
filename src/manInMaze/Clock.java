@@ -1,30 +1,19 @@
 package manInMaze;
 
 import java.applet.Applet;
-import java.awt.*;
 
-public class Clock extends Grid implements Runnable {
+public class Clock extends Applet implements Runnable {
     String time;
 
-    public Clock() {
-        super();
+    Clock() {
         new Thread(this).start();
     }
 
     @Override
     public void run() {
+        repaint();
         while (true) {
-            try {
-                time = Long.toString(System.currentTimeMillis());
-                Thread.sleep(1000);
-                repaint();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            time = Long.toString(System.currentTimeMillis());
         }
     }
-
-//    public void paint(Graphics g) {
-//        g.drawString(time, 10, 10);
-//    }
 }

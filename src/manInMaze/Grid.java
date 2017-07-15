@@ -4,8 +4,6 @@ import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.text.AttributedCharacterIterator;
-
 /*
     <applet code="Grid" width=500 height=500>
     </applet>
@@ -17,21 +15,16 @@ public class Grid extends Applet implements MouseListener {
     private String msg = "?";
     private int x = 200;
     private int y = 200;
-    Thread thread;
     Clock clock;
 
-    public Grid() throws HeadlessException {
-        //this.clock = new Clock();
+    public Grid() {
+        this.clock = new Clock();
     }
 
     public Grid(Man man, Monster monster, Wall wall) throws HeadlessException {
         this.man = man;
         this.monster = monster;
         this.wall = wall;
-        //this.thread = new Thread(this);
-        //this.thread.start();
-        this.clock = new Clock();
-        //new Thread(clock);
     }
 
     public void setMan(Man man) {
@@ -64,7 +57,13 @@ public class Grid extends Applet implements MouseListener {
 
     public void paint(Graphics g) {
         g.drawString(msg, x, y);
-        //g.drawString(clock.time, 10, 10);
+        g.drawString(String.valueOf(clock.time), 10, 10);
+        try {
+            repaint();
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
