@@ -18,7 +18,7 @@ public class Grid extends Applet implements MouseListener {
     Clock clock;
 
     public Grid() {
-        this.clock = new Clock();
+        this.clock = new Clock(this);
     }
 
     public Grid(Man man, Monster monster, Wall wall) throws HeadlessException {
@@ -58,12 +58,6 @@ public class Grid extends Applet implements MouseListener {
     public void paint(Graphics g) {
         g.drawString(msg, x, y);
         g.drawString(String.valueOf(clock.time), 10, 10);
-        try {
-            repaint();
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
