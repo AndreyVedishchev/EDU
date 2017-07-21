@@ -11,11 +11,15 @@ public class POJO_int {
         data = new int[size];
     }
 
-    public void put(int element) {
+//    public void put(int element) {
+//        data[current] = element;
+//        current++;
+//    }
+
+    public void put(Integer element) {
         data[current] = element;
         current++;
     }
-
     public void print(){
         System.out.println(data);
     }
