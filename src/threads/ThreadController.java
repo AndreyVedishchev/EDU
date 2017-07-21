@@ -1,7 +1,6 @@
 package threads;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class ThreadController {
     public static void main(String args[]) throws InterruptedException {
