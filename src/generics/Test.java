@@ -7,28 +7,14 @@ import java.applet.Applet;
  */
 public class Test {
     public static void main(String[] args) {
-        POJO_int ob = new POJO_int(10);
+        Gen2<Integer> integerGen2 = new Gen2<Integer>(5);
+        Gen2<Double> doubleGen2 = new Gen2<Double>(56.4);
+        int i = 1;
+        double d = Math.PI;
 
-        Object[] ob_arr = new Object[10];
-        /*
-        byte Byte
-        short Short
-        int Integer
-        long Long
-        boolean Boolean
-        char Character
-        float Float
-        double double
-
-        */
-
-        Long l = 190l;//new Long(190);
-        System.out.println(l);
-        Character c = 'g';
-        Integer i = 10;
-        int a = 19;
-        ob.put(a);
-        System.out.println(l);
-        long l2 = l;
+        System.out.println(integerGen2.getSum(i));
+        System.out.println(doubleGen2.getSum(d));
+        System.out.println("1" + "|\t" + "Вася" + "|\t" + "01012100");
+        //FileWriter filewrite = new Filewriter("C:\1.txt");
     }
 }

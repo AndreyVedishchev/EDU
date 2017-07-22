@@ -12,7 +12,7 @@ public class Demo1{
         static int mas[] = new int[20];
 
 public static void main(String args[]){
-    file = new File("C:\\Users\\Vedischevan\\IdeaProjects\\EDU\\src\\tasks\\readingFromАFile\\1.txt");
+    file = new File("C:\\Git\\EDU\\src\\tasks\\readingFromАFile\\1.txt");
 
     try {
         scn = new Scanner(file);
