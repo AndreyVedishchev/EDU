@@ -24,9 +24,19 @@ public class Row {
         len_name = name.length();
     }
 
-    @Override
-    public String toString() {
-        return "| " + num + " | " + date + " | " + name + " |";
+//    @Override
+//    public String toString() {
+//        return "| " + num + " | " + date + " | " + name + " |";
+//    }
+
+    public void print() {
+        if (num.length() == 8 && date.length() == 7 && name.length() == 7) {
+            System.out.println("| " + num + " | " + date + " | " + name + " |");
+        }
+        else {
+            System.out.println("| " + num + " | " + date + " | " + name + " |");
+            System.out.println("| " + "        " + " | " + "       " + " | " + "       " + " |");
+        }
     }
 
     public String getNum() {

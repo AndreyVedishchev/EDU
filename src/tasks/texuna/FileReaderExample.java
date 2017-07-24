@@ -9,8 +9,11 @@ import java.util.List;
 
 public class FileReaderExample {
 
-    private static void headLine() {
+    private static void head() {
         System.out.println("| Номер    | Дата    | ФИО     |");
+    }
+
+    private static void line() {
         System.out.println("--------------------------------");
     }
 
@@ -19,21 +22,23 @@ public class FileReaderExample {
 //            String filepath = args[0];
 //            System.out.println(args[0] + args[3]);
 //        }
-        BufferedReader reader = new BufferedReader(new FileReader("C:\\Git\\EDU\\src\\tasks\\texuna\\text"));
+        BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Vedischevan\\IdeaProjects\\EDU\\src\\tasks\\texuna\\text"));
         String buff;
         int cnt = 0;
         List<Row> list = new LinkedList<>();
 
-        while ((buff = reader.readLine()) != null && cnt < 10) {
+        while ((buff = reader.readLine()) != null) {
             list.add(new Row(buff));
             cnt++;
         }
 
-        headLine();
+        head();
+        line();
 
         for (Row r: list) {
-            System.out.println(r);
-            System.out.println("--------------------------------");
+            r.print();
+            //System.out.println(r);
+            line();
         }
 
     }
