@@ -8,10 +8,11 @@ package tasks.threads;
 
 public class Main extends Thread{
     public static void main(String[] args) {
-        while (StartThread.y < 150) {
-        new StartThread("t1");
-        new StartThread("t2");
-        new StartThread("t3");
-        }
+
+        StartThread t1 = new StartThread("t1");
+        StartThread t2 =new StartThread("t2");
+        StartThread t3 =new StartThread("t3");
+        t1.resume();
+
     }
 }
