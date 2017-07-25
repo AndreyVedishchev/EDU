@@ -22,10 +22,10 @@ public class FileReaderExample {
 //            String filepath = args[0];
 //            System.out.println(args[0] + args[3]);
 //        }
-        BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Vedischevan\\IdeaProjects\\EDU\\src\\tasks\\texuna\\text"));
+        BufferedReader reader = new BufferedReader(new FileReader("./tests/text.tcv"));
         String buff;
         int cnt = 0;
-        List<Row> list = new LinkedList<>();
+        List<Row> list = new LinkedList<Row>();
 
         while ((buff = reader.readLine()) != null) {
             list.add(new Row(buff));
@@ -40,6 +40,7 @@ public class FileReaderExample {
             //System.out.println(r);
             line();
         }
+        reader.close();
 
     }
 }

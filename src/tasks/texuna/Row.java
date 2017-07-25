@@ -2,54 +2,65 @@ package tasks.texuna;
 
 public class Row {
 
-    String num, date, name, all;
-    int len_num, len_date, len_name;
+    String num, date, name;
+    double width;
+
+    private static int num_wdh, date_wdh, name_wdh;
+
+    public static void setNum_wdh(int num_wdh) {
+        Row.num_wdh = num_wdh;
+    }
+
+    public static void setDate_wdh(int date_wdh) {
+        Row.date_wdh = date_wdh;
+    }
+
+    public static void setName_wdh(int name_wdh) {
+        Row.name_wdh = name_wdh;
+    }
+
+
 
     public Row(String row) {// на вход передается строка
         int begin = 0;
         int end;
-        all = row;
+
 
         end = row.indexOf('\t');
         this.num = row.substring(begin, end);//(сканируем с нуля до первого пробела)
-        len_num = num.length();
+
 
         begin = end + 1;
         end = row.indexOf('\t', begin);//(сканируем со след. символа после первого пробела до второго пробела)
         this.date = row.substring(begin, end);
-        len_date = date.length();
+
 
 
         begin = end + 1;
         this.name = row.substring(begin);//(сканируем со след. символа после второго пробела до конца строки)
-        len_name = name.length();
+
+        //посчитаем сколько строк будет занимать данная запись
+        int widthNum = (int) Math.ceil((double)num.length()/name_wdh);
+        int widthDate = (int) Math.ceil((double)date.length()/date_wdh);
+        int widthName = (int) Math.ceil((double)name.length()/name_wdh);
+
+        width =  Math.max(widthDate, widthName);
+        width =  Math.max(widthNum, width);
+
     }
 
-//    @Override
-//    public String toString() {
-//        return "| " + num + " | " + date + " | " + name + " |";
-//    }
 
     public void print() {
-        char []arrNum = num.toCharArray();
-        char []arrDate = date.toCharArray();
-        char []arrName = name.toCharArray();
+        if (num.length() == num_wdh) {
 
-        String s1 = null;
+        }
 
-        if (num.length() == 8 & date.length() == 7 & name.length() == 7) {
-            System.out.println("| " + num + " | " + date + " | " + name + " |");
+        if (num.length() > num_wdh){
+
         }
-        if (date.length() > 0 & date.length() <= 7 & name.length() <= 7) {
-            System.out.printf("| %-8s | %-7s | %-7s |\n", num, date, name);
-        }
-        if (date.length() > 0 & date.length() <= 7 & name.length() > 7) {
-            System.out.printf("| %-8s | %-7s | %-7s |\n", num, date, String.copyValueOf(arrName, 0, 6));
-            System.out.printf("| %-8s | %-7s | %-7s |\n", " ", date, String.copyValueOf(arrName, 7, arrName.length - 7));
-        }
-        if (date.length() > 7 && name.length() > 7) {
-            System.out.printf("| %-8s | %-7s | %-7s |\n", num, String.copyValueOf(arrDate, 0, 6), String.copyValueOf(arrName, 0, 6));
-            System.out.printf("| %-8s | %-7s | %-7s |\n", " ", String.copyValueOf(arrDate, 7, arrDate.length - 7), String.copyValueOf(arrName, 7, arrDate.length - 7));
+
+        if (num.length() < num_wdh){
+
         }
     }
 
@@ -65,15 +76,5 @@ public class Row {
         return name;
     }
 
-    public int getLen_num() {
-        return len_num;
-    }
 
-    public int getLen_date() {
-        return len_date;
-    }
-
-    public int getLen_name() {
-        return len_name;
-    }
 }
