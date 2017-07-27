@@ -13,18 +13,18 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args) throws IOException {
-        List<Integer> widths = new ArrayList<Integer>();
+        List<Integer> widths = new ArrayList<Integer>();//создание коллекции из значений ширины для каждого столбца
         widths.add(8);
         widths.add(7);
         widths.add(7);
         int pageW = 32;
         int pageH = 12;
         char delim = '\t';
-        List<Entry> entryList;
-        List<Page> pageList = new ArrayList<Page>();
-        Entry header = new Entry("Номер\tДата\tФИО", delim, widths);
-        EntryParser entryParser = new EntryParser(delim, widths);
-        entryList = entryParser.parse(new File("./tests/text.tcv"));
+        List<Entry> entryList;//создание коллекции объектов Entry
+        List<Page> pageList = new ArrayList<Page>();//создание коллекции объектов Page
+        Entry header = new Entry("Номер\tДата\tФИО", delim, widths);//создание шапки
+        EntryParser entryParser = new EntryParser(delim, widths);// создаем объект парсера
+        entryList = entryParser.parse(new File("./tests/text.tcv"));//передаем в коллекцию Entry распарсеный файл
 
 
         Page page = null;
