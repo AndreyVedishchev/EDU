@@ -1,4 +1,4 @@
-package generics;
+package generics.linklistplain;
 
 public class LinkList {
     private Node head;
@@ -22,7 +22,15 @@ public class LinkList {
 
 
     public int size() {
-        if (head == null)
-        return 0;
+        int val = 0;
+        Node cursor = head;
+
+        while(cursor != null){
+
+            cursor = cursor.getNext();
+            val++;
+        }
+
+        return val;
     }
 }

@@ -1,4 +1,4 @@
-package generics;
+package generics.linklistplain;
 
 /**
  * Created by Андрей on 21.07.2017.
