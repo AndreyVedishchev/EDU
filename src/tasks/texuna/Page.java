@@ -27,6 +27,7 @@ public class Page {
     }
 
     public boolean addEntry(Entry entry){
+
         if (getActualHeight() + entry.getHeight() + 1 <= this.height) {
             entryList.add(entry);
             return true;

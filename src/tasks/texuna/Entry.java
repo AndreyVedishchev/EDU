@@ -21,6 +21,7 @@ public class Entry {
             }
             else {
                 fields.add(buffer.toString());
+
                 buffer = new StringBuffer();
             }
         }
