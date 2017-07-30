@@ -8,13 +8,21 @@ public class LinkList {
         head = new_;
     }
 
-//todo!!!
+
     public String extract(){
-        String lastValue = null;
+        String value;
         if (head != null) {
-            lastValue = head.getValue();
+            value = head.getValue();
+
             head = head.getNext();
+            return value;
         }
-        return lastValue;
+        else return null;
+    }
+
+
+    public int size() {
+        if (head == null)
+        return 0;
     }
 }

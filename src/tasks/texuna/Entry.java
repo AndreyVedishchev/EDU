@@ -1,11 +1,7 @@
-package tasks.texuna2;
+package tasks.texuna;
 
 import java.util.*;
 
-
-/**
- * Created by Андрей on 25.07.2017.
- */
 public class Entry {
     private List<String> fields = new ArrayList<String>();
     private List<Integer> widths = new ArrayList<Integer>();

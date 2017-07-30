@@ -1,13 +1,10 @@
-package tasks.texuna2;
+package tasks.texuna;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Андрей on 25.07.2017.
- */
 public class Page {
-    private List<Entry> entryList = new ArrayList<Entry>();
+    private List<Entry> entryList = new ArrayList<>();
     private Entry header;
     private String delim;
     private int height, width;
@@ -23,6 +20,7 @@ public class Page {
         }
         delim = new String(buff);
     }
+
     @Deprecated
     public void setEntryList(List<Entry> entryList){
         this.entryList = entryList;
