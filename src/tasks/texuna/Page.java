@@ -21,11 +21,6 @@ public class Page {
         delim = new String(buff);
     }
 
-    @Deprecated
-    public void setEntryList(List<Entry> entryList){
-        this.entryList = entryList;
-    }
-
     public boolean addEntry(Entry entry){
 
         if (getActualHeight() + entry.getHeight() + 1 <= this.height) {
@@ -40,20 +35,14 @@ public class Page {
         for (Entry entry : entryList) {
             System.out.println(delim);
             entry.printEntry();
-
         }
     }
 
     public int getActualHeight(){
-        //1= заголовок
-        //entry.height + 1 = запись
-
         int ret = 1;
-
         for (Entry entry : entryList) {
             ret += entry.getHeight() + 1;
         }
-
         return ret;
     }
 }

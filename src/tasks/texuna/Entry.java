@@ -6,8 +6,6 @@ public class Entry {
     private List<String> fields = new ArrayList<String>();
     private List<Integer> widths = new ArrayList<Integer>();
     private int height;
-    private String formatedEntry;
-
 
     public Entry(String row, char delim, List<Integer> widths){
         this.widths = widths;
@@ -21,14 +19,10 @@ public class Entry {
             }
             else {
                 fields.add(buffer.toString());
-
                 buffer = new StringBuffer();
             }
         }
-
         this.height = CalcHeight();
-
-
     }
 
     private int CalcHeight(){
@@ -39,12 +33,9 @@ public class Entry {
         }
 
         for (int i = 0; i < fields.size(); i++) {
-
             curr = (int) Math.ceil((double) fields.get(i).length()/widths.get(i));
             ret = Math.max(ret, curr);
-
         }
-
         return ret;
     }
 
@@ -56,16 +47,11 @@ public class Entry {
                 s = lPad(fields.get(j), widths.get(j)*height);
                 s = s.substring(i*widths.get(j), (i+1)*widths.get(j));
                 System.out.print(s + " ");
-                //lPad(fields.get(j), widths.get(j)).substring(0 , widths.get(j));
             }
             System.out.print("|");
             System.out.println();
-
-
         }
     }
-
-
 
     public static String lPad(String s, int n){
         return String.format("%-" + n + "s", s);

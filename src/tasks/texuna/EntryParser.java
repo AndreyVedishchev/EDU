@@ -21,7 +21,6 @@ public class EntryParser {
         while ((buff = reader.readLine()) != null) {
             entryList.add(new Entry(buff, delim, widths));
         }
-
         return entryList;
     }
 }
