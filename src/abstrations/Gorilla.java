@@ -6,6 +6,10 @@ public class Gorilla extends Mammals {
         super(age, Eniv.GROUND, limbs);
     }
 
+
+    public void UUAUAU(){
+
+    }
     @Override
     public void move() {
         System.out.println("Gorilla climbs skyscrapper with small blonde girl");

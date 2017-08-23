@@ -1,8 +1,10 @@
 package generics;
 
 
-import generics.linklistgen.*;
-
+;import abstrations.Gorilla;
+import abstrations.Human;
+import abstrations.Spider;
+import jdk.internal.org.objectweb.asm.Handle;
 
 
 /**
@@ -10,23 +12,16 @@ import generics.linklistgen.*;
  */
 public class Test {
     public static void main(String[] args) {
+        GenEnt<Gorilla> obG = new GenEnt<>(new Gorilla(20, null));
 
-        LinkList<Integer> integerLinkList = new LinkList<>();
-        LinkList<String> linkList = new LinkList<>();
+        GenEnt<Human> obH = new GenEnt<>(new Human(27, "Vasya", 178, null));
+
+        GenEnt<Human> obH2 = new GenEnt<>(new Human(34, "Vasya", 178, null));
 
 
-        linkList.put("Hello");
-        linkList.put("World");
-        System.out.println(linkList.size());
-        System.out.println(linkList.extract());
+        GenEnt<Spider> obS = new GenEnt<>(new Spider(5, null, null));
 
-        integerLinkList.put(1);
-        integerLinkList.put(2);
-        integerLinkList.put(123);
-        System.out.println(integerLinkList.size());
-        System.out.println(integerLinkList.extract());
-        
-
+        System.out.println(obH.isOlderThan(obG));
 
 
     }
