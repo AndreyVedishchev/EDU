@@ -5,9 +5,7 @@ import abstrations.Gorilla;
 import abstrations.Human;
 import abstrations.Mammals;
 
-/**
- * Created by Андрей on 23.08.2017.
- */
+
 public class GenEnt<V extends Creature> {
     V creature;
 
