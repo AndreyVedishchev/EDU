@@ -1,9 +1,11 @@
 package generics.linklistgen;
 
+import java.util.List;
+
 /**
  * Created by Андрей on 30.07.2017.
  */
-public class LinkList<E> {
+public class LinkList<E> implements List<E> {
     private Node<E> head;
 
     public void put(E value) {

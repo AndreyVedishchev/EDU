@@ -1,47 +1,20 @@
 package collections;
 
+import abstrations.Gorilla;
+import abstrations.Human;
+import abstrations.Mammals;
+
 import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
-        Map<String, String> map = new HashMap<>();
-        map.put("а", ".-");
-        map.put("б", "-...");
-        map.put("в", ".--");
-        map.put("г", "--.");
-        map.put("д", "-..");
-        map.put("е", ".");
-        map.put("ж", "...-");
-        map.put("з", "--..");
-        map.put("и", "..");
-        map.put("й", ".---");
-        map.put("к", "-.-");
-        map.put("л", ".-..");
-        map.put("м", "--");
-        map.put("н", "-.");
-        map.put("о", "---");
-        map.put("п", ".--.");
-        map.put("р", ".-.");
-        map.put("с", "...");
-        map.put("т", "-");
-        map.put("у", "..-");
-        map.put("ф", "..-.");
-        map.put("х", "....");
-        map.put("ц", "-.-.");
-        map.put("ч", "---.");
-        map.put("ш", "----");
-        map.put("щ", "--.-");
-        map.put("ъ", ".--.-.");
-        map.put("ы", "-.--");
-        map.put("ь", "-..-");
-        map.put("э", "..-..");
-        map.put("ю", "..--");
-        map.put("я", ".-.-");
+        Human andrey = new Human(15, "Andrey", 170, null);
+        Human andrey_ = new Human(15, "Andrey", 170, null);
+        Human sergey = new Human(15, "Sergey", 170, null);
+        Human andrey2 = andrey;
 
-        System.out.println(args[0]);
-        char []arr = args[0].toCharArray();
-        for (char anArr : arr) {
-            System.out.print(map.get(String.valueOf(anArr)));
-        }
+        if (andrey.equals(sergey)) System.out.println("!");
+
+
     }
 }

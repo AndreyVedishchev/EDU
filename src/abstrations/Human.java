@@ -20,4 +20,25 @@ public class Human extends  Mammals {
     public void sound() {
         System.out.println("Болтаю не по детски");
     }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) return true;
+
+        if (o instanceof Human){
+
+            Human anHuman = (Human) o;
+            if (this.getAge() == anHuman.getAge()
+                    && this.name == anHuman.name
+                    && this.height == anHuman.height) {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+
+
 }
