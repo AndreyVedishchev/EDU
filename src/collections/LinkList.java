@@ -1,5 +1,7 @@
 package collections;
 
+import generics.linklistgen.Node;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.ListIterator;
 
 //todo должно дополнять функциональсть generics.linklistgen.LinkList
 public class LinkList<E> implements List {
+    private Node<E> head;
 
     @Override
     public int size() {
@@ -16,6 +19,12 @@ public class LinkList<E> implements List {
 
     @Override
     public boolean isEmpty() {
+        E value;
+        Node<E> cursor = head;
+        if(head != null) {
+
+            return true;
+        }
         return false;
     }
 
