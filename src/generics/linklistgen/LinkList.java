@@ -29,7 +29,6 @@ public abstract class LinkList<E> implements List<E> {
         Node<E> cursor = head;
 
         while(cursor != null){
-
             cursor = cursor.getNext();
             val++;
         }

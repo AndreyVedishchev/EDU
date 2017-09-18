@@ -14,15 +14,19 @@ public class LinkList<E> implements List {
 
     @Override
     public int size() {
-        return 0;
+        int val = 0;
+        Node<E> cursor = head;
+
+        while(cursor != null){
+            cursor = cursor.getNext();
+            val++;
+        }
+        return val;
     }
 
     @Override
     public boolean isEmpty() {
-        E value;
-        Node<E> cursor = head;
-        if(head != null) {
-
+        if(head == null) {
             return true;
         }
         return false;
@@ -30,6 +34,14 @@ public class LinkList<E> implements List {
 
     @Override
     public boolean contains(Object o) {
+        Node<E> cursor = head;
+
+        while (cursor != null) {
+            cursor = cursor.getNext();
+            if(cursor == o) {
+                return true;
+            }
+        }
         return false;
     }
     //
@@ -40,7 +52,15 @@ public class LinkList<E> implements List {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        Node<E> cursor = head;
+        Object[] arr = {};
+        int number = 0;
+
+        while (cursor != null) {
+            arr[number++] = cursor;
+            cursor = cursor.getNext();
+        }
+        return new Object[number];
     }
 
     @Override
@@ -65,7 +85,9 @@ public class LinkList<E> implements List {
 
     @Override
     public void clear() {
-
+        if (head != null) {
+            head = null;
+        }
     }
 
     @Override
