@@ -65,11 +65,30 @@ public class LinkList<E> implements List {
 
     @Override
     public boolean add(Object o) {
-        return false;
+        Node<E> cursor = head;
+
+        while (cursor != null) {
+            cursor = cursor.getNext();
+            if(cursor == o) return false;
+        }
+
+        Node<E> node = new Node<>((E) o, head);
+        head = node;
+        return true;
     }
 
     @Override
     public boolean remove(Object o) {
+        Node<E> cursor = head;
+
+        while (cursor != null) {
+            cursor = cursor.getNext();
+            if(cursor == o) {
+                //o = null;
+                cursor = cursor.getNext();
+                return true;
+            }
+        }
         return false;
     }
 
