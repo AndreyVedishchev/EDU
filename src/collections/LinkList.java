@@ -111,6 +111,16 @@ public class LinkList<E> implements List {
 
     @Override
     public Object get(int index) {
+        int cnt = 0;
+        Node<E> cursor = head;
+
+        if (head != null && index >= 0) {
+            while (cnt != index) {
+                cursor = cursor.getNext();
+                cnt++;
+            }
+            return cursor;
+        }
         return null;
     }
 
