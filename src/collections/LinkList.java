@@ -37,10 +37,11 @@ public class LinkList<E> implements List {
         Node<E> cursor = head;
 
         while (cursor != null) {
-            cursor = cursor.getNext();
-            if(cursor == o) {
+
+            if(cursor.getValue().equals(o)) {
                 return true;
             }
+            cursor = cursor.getNext();
         }
         return false;
     }
@@ -53,24 +54,21 @@ public class LinkList<E> implements List {
     @Override
     public Object[] toArray() {
         Node<E> cursor = head;
-        Object[] arr = {};
+        Object[] arr = new Object[this.size()];
         int number = 0;
 
         while (cursor != null) {
-            arr[number++] = cursor;
+            arr[number++] = cursor.getValue();
             cursor = cursor.getNext();
         }
-        return new Object[number];
+        return arr;
     }
 
     @Override
     public boolean add(Object o) {
         Node<E> cursor = head;
 
-        while (cursor != null) {
-            cursor = cursor.getNext();
-            if(cursor == o) return false;
-        }
+
 
         Node<E> node = new Node<>((E) o, head);
         head = node;
@@ -80,14 +78,16 @@ public class LinkList<E> implements List {
     @Override
     public boolean remove(Object o) {
         Node<E> cursor = head;
-
+        Node<E> prev = null;
         while (cursor != null) {
-            cursor = cursor.getNext();
-            if(cursor == o) {
-                //o = null;
-                cursor = cursor.getNext();
+
+            if (cursor.getValue().equals(o)){
+                if (prev != null) prev.setNext(cursor.getNext());
+                else head = cursor.getNext();
                 return true;
             }
+            prev = cursor;
+            cursor = cursor.getNext();
         }
         return false;
     }

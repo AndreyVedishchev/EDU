@@ -8,13 +8,18 @@ import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
-        Human andrey = new Human(15, "Andrey", 170, null);
-        Human andrey_ = new Human(15, "Andrey", 170, null);
-        Human sergey = new Human(15, "Sergey", 170, null);
-        Human andrey2 = andrey;
+        List<String> list = new LinkList<>();
+        list.add("a");
+        list.add("Q");
+        list.add("t");
+        list.add("r");
+        System.out.println(list.remove("t"));
 
-        if (andrey.equals(sergey)) System.out.println("!");
+        Object[] arr = list.toArray();
 
-
+        System.out.println(arr.length);
+        for (Object o : arr) {
+            System.out.println(o.toString());
+        }
     }
 }
