@@ -13,17 +13,18 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Parser {
+class Parser {
 
-    private Map<String, String> map;
-    private String s, d;
+    Nom nom;
+    Map<String, Nom> map;
+    String key, nName, nDsc;
 
-    public Parser(String path) throws IOException, SAXException, ParserConfigurationException {
-       fileToMap(path);
+    Parser(String path) throws IOException, SAXException, ParserConfigurationException {
+        map = new HashMap<>();
+        fileToMap(path);
     }
 
-    Map<String, String> fileToMap (String file) throws ParserConfigurationException, IOException, SAXException {
-        map = new HashMap<>();
+    Map<String, Nom> fileToMap (String file) throws ParserConfigurationException, IOException, SAXException {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -33,9 +34,10 @@ public class Parser {
 
         for (int i = 0; i < nodeList.getLength(); i++) {
             Element elm = (Element) nodeList.item(i);
-            s = elm.getElementsByTagName("CODE").item(0).getChildNodes().item(0).getNodeValue();
-            d = elm.getElementsByTagName("NAME").item(0).getChildNodes().item(0).getNodeValue();
-            map.put(s, d);
+            key = elm.getElementsByTagName("CODE").item(0).getChildNodes().item(0).getNodeValue();
+            nName = elm.getElementsByTagName("NAME").item(0).getChildNodes().item(0).getNodeValue();
+            nDsc = elm.getElementsByTagName("DSC").item(0).getChildNodes().item(0).getNodeValue();
+            map.put(key, new Nom(nName, key, nDsc));
         }
         return map;
     }
