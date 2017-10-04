@@ -15,20 +15,17 @@ import java.util.Map;
 
 class Parser {
 
-    Nom nom;
-    Map<String, Nom> map;
-    String key, nName, nDsc;
 
-    Parser(String path) throws IOException, SAXException, ParserConfigurationException {
+    static Map<String, Nom> map;
+    static String key, nName, nDsc;
+
+
+    static Map<String, Nom> fileToMap (File file) throws ParserConfigurationException, IOException, SAXException {
         map = new HashMap<>();
-        fileToMap(path);
-    }
-
-    Map<String, Nom> fileToMap (String file) throws ParserConfigurationException, IOException, SAXException {
-
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        Document document = builder.parse(new File(file));
+        Document document = builder.parse(file);
+
 
         NodeList nodeList = document.getElementsByTagName("NOM");
 
@@ -42,7 +39,4 @@ class Parser {
         return map;
     }
 
-    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
-        new Parser("./src/tasks/parsing_XML_to_Map/nom20141201130607.xml");
-    }
 }

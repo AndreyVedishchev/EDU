@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="windows-1251"?> 
+ <DOC> 
+   <DOC_OUT>
+    <NUMBER>test_ext_fields</NUMBER>
+    <ID_DOC>test_ext_fields</ID_DOC>
+    <DATE>2017-10-03T00:00:00</DATE>
+	<DELIVERY_DATE>2017-10-03T00:00:00</DELIVERY_DATE>
+    <SHIPMENT_DATE>2017-10-03T00:00:00</SHIPMENT_DATE>
+    <RESPONS_PERS>ЯСТРЕБЧИКОВА Е.М.;</RESPONS_PERS>
+    <CUSTOMER_ID>8709</CUSTOMER_ID>
+    <CUSTOMER>САПАРОВ А.Г. ИП</CUSTOMER>
+    <DESTINATION>420076 г. Казань, ул. Попова, д. 1, кв. 10</DESTINATION>
+    <TYPE>6</TYPE>
+    <DSC>подписать Ямашева  подвоз 30.08</DSC>
+    <CONTENT>
+      <CODE CODE_ID="10041">
+	    <ROW_ID>3568556</ROW_ID>
+		<EXT_DOC_POSITION>1</EXT_DOC_POSITION>
+        <NOM_TYP>1</NOM_TYP>
+        <SUB_NOM_TYP>11</SUB_NOM_TYP>
+        <UNIT_TYP>шт</UNIT_TYP>
+        <CNT>2</CNT>
+    <EXT_PARAMS>
+      <PARAM>
+           <PARAM_NAME>CLIENT_BARCODE</PARAM_NAME>
+           <PARAM_VALUE>0000001111111</PARAM_VALUE>
+           <PARAM_CAPTION>ШК клиента</PARAM_CAPTION>
+      </PARAM>
+      <PARAM>
+           <PARAM_NAME>CLIENT_NAME</PARAM_NAME>
+           <PARAM_VALUE>имя клиента значение 01</PARAM_VALUE>
+           <PARAM_CAPTION>Наименование клиента</PARAM_CAPTION>
+      </PARAM>
+      <PARAM>
+           <PARAM_NAME>CLIENT_CODE</PARAM_NAME>
+           <PARAM_VALUE>6540001</PARAM_VALUE>
+           <PARAM_CAPTION>Код клиента</PARAM_CAPTION>
+      </PARAM>
+    </EXT_PARAMS>
+	  </CODE>
+      <CODE CODE_ID="10041">
+	    <ROW_ID>3568608</ROW_ID>
+		<EXT_DOC_POSITION>2</EXT_DOC_POSITION>
+        <NOM_TYP>1</NOM_TYP>
+        <SUB_NOM_TYP>11</SUB_NOM_TYP>
+        <UNIT_TYP>шт</UNIT_TYP>
+        <CNT>2</CNT>
+    <EXT_PARAMS>
+      <PARAM>
+           <PARAM_NAME>CLIENT_BARCODE</PARAM_NAME>
+           <PARAM_VALUE>0000001111112</PARAM_VALUE>
+           <PARAM_CAPTION>ШК клиента</PARAM_CAPTION>
+      </PARAM>
+      <PARAM>
+           <PARAM_NAME>CLIENT_NAME</PARAM_NAME>
+           <PARAM_VALUE>имя клиента значение 02</PARAM_VALUE>
+           <PARAM_CAPTION>Наименование клиента</PARAM_CAPTION>
+      </PARAM>
+      <PARAM>
+           <PARAM_NAME>CLIENT_CODE</PARAM_NAME>
+           <PARAM_VALUE>654002</PARAM_VALUE>
+           <PARAM_CAPTION>Код клиента</PARAM_CAPTION>
+      </PARAM>
+    </EXT_PARAMS>
+      </CODE>
+      <CODE CODE_ID="10041">
+	    <ROW_ID>3568609</ROW_ID>
+		<EXT_DOC_POSITION>3</EXT_DOC_POSITION>
+        <NOM_TYP>3</NOM_TYP>
+        <SUB_NOM_TYP>10</SUB_NOM_TYP>
+        <UNIT_TYP>шт</UNIT_TYP>
+        <CNT>2</CNT>
+    <EXT_PARAMS>
+      <PARAM>
+           <PARAM_NAME>CLIENT_BARCODE</PARAM_NAME>
+           <PARAM_VALUE>0000001111113</PARAM_VALUE>
+           <PARAM_CAPTION>ШК клиента</PARAM_CAPTION>
+      </PARAM>
+      <PARAM>
+           <PARAM_NAME>CLIENT_NAME</PARAM_NAME>
+           <PARAM_VALUE>имя клиента значение 03</PARAM_VALUE>
+           <PARAM_CAPTION>Наименование клиента</PARAM_CAPTION>
+      </PARAM>
+      <PARAM>
+           <PARAM_NAME>CLIENT_CODE</PARAM_NAME>
+           <PARAM_VALUE>654003</PARAM_VALUE>
+           <PARAM_CAPTION>Код клиента</PARAM_CAPTION>
+      </PARAM>
+    </EXT_PARAMS>
+      </CODE>
+    </CONTENT>
+    <EXT_PARAMS>
+      <PARAM>
+           <PARAM_NAME>FIELD DSC2</PARAM_NAME>
+           <PARAM_VALUE>подписать Ямашева  подвоз 30.08</PARAM_VALUE>
+           <PARAM_CAPTION>Примечание 2</PARAM_CAPTION>
+      </PARAM>
+      <PARAM>
+           <PARAM_NAME>SECTION_BARCODE</PARAM_NAME>
+           <PARAM_VALUE>1231230001</PARAM_VALUE>
+           <PARAM_CAPTION>ШК секции магазина</PARAM_CAPTION>
+      </PARAM>
+      <PARAM>
+           <PARAM_NAME>SECTION_NUM</PARAM_NAME>
+           <PARAM_VALUE>109</PARAM_VALUE>
+           <PARAM_CAPTION>Номер магазина/секции</PARAM_CAPTION>
+      </PARAM>
+    </EXT_PARAMS>	
+	</DOC_OUT>
+ </DOC>

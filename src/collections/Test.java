@@ -8,18 +8,21 @@ import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
-        List<String> list = new LinkList<>();
-        list.add("a");
-        list.add("Q");
-        list.add("t");
-        list.add("r");
-        System.out.println(list.remove("t"));
+        Collection<String> collection = new ArrayList<>();
+        Collection<Number> numberCollection = new ArrayList<>();
+        collection.add("a");
+        collection.add("x");
+        collection.add("k");
+        collection.add("j");
+        collection.add("'");
 
-        Object[] arr = list.toArray();
 
-        System.out.println(arr.length);
-        for (Object o : arr) {
-            System.out.println(o.toString());
+        Iterator<String> iterator =  collection.iterator();
+
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+
         }
+
     }
 }
