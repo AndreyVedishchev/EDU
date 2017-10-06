@@ -25,7 +25,53 @@ public class DocOut {
         lines = new ArrayList<>();
     }
 
+    public String getIdDoc() {
+        return idDoc;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getShipmentDate() {
+        return shipmentDate;
+    }
+
+    public String getResponsPerson() {
+        return responsPerson;
+    }
+
+    public String getCustomer() {
+        return customer;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public String getDsc() {
+        return dsc;
+    }
+
+    public List<ContLine> getLines() {
+        return lines;
+    }
+
     public void addLine(ContLine line){
         lines.add(line);
+    }
+
+    @Override
+    public String toString() {
+        return "DocOut{" +
+                "idDoc='" + idDoc + '\'' +
+                ", date='" + date + '\'' +
+                ", shipmentDate='" + shipmentDate + '\'' +
+                ", responsPerson='" + responsPerson + '\'' +
+                ", customer='" + customer + '\'' +
+                ", destination='" + destination + '\'' +
+                ", dsc='" + dsc + '\'' +
+                ", lines=" + lines +
+                '}';
     }
 }
