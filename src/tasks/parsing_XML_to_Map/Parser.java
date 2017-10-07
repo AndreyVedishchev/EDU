@@ -25,7 +25,7 @@ class Parser {
 
     static List <ContLine>list;
     static String codeId;
-    static String nomTyp, cnt;
+    static int nomTyp, cnt;
 
     static NodeList dom(File file, String tagname) throws ParserConfigurationException, IOException, SAXException{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -38,13 +38,8 @@ class Parser {
     static Map<String, Nom> fileToMap (File file) throws ParserConfigurationException, IOException, SAXException {
 
         map = new HashMap<>();
-//        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-//        DocumentBuilder builder = factory.newDocumentBuilder();
-//        Document document = builder.parse(file);
-//        NodeList nodeList = document.getElementsByTagName("NOM");
         dom(file, "NOM");
 
-        //for (int i = 0; i < nodeList.getLength(); i++) {
         for (int i = 0; i < dom(file, "NOM").getLength(); i++) {
 
             Element elm = (Element) dom(file, "NOM").item(i);
@@ -59,10 +54,6 @@ class Parser {
 
     static DocOut fileToDocOut (File file) throws ParserConfigurationException, IOException, SAXException{
 
-//        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-//        DocumentBuilder builder = factory.newDocumentBuilder();
-//        Document document = builder.parse(file);
-//        NodeList nodeList = document.getElementsByTagName("DOC_OUT");
         dom(file, "DOC_OUT");
 
         for (int i = 0; i < dom(file, "DOC_OUT").getLength(); i++) {
@@ -77,24 +68,23 @@ class Parser {
             destination = elm.getElementsByTagName("DESTINATION").item(0).getChildNodes().item(0).getNodeValue();
             dsc = elm.getElementsByTagName("DSC").item(0).getChildNodes().item(0).getNodeValue();
         }
-        return docOut = new DocOut(idDoc, date, shipmentDate, responsPerson, customer, destination, dsc);
+        return docOut = new DocOut(idDoc, date, shipmentDate, responsPerson, customer, destination, dsc, file);
     }
 
-    static ContLine fileToContLine (File file) throws IOException, SAXException, ParserConfigurationException {
+    static List <ContLine>fileToContLineList (File file) throws IOException, SAXException, ParserConfigurationException {
 
         list = new ArrayList();
-        dom(file, "CONTENT");
+        dom(file, "CODE");
 
-        for (int i = 0; i < dom(file, "CONTENT").getLength(); i++) {
+        for (int i = 0; i < dom(file, "CODE").getLength(); i++) {
 
-            Element elm = (Element) dom(file, "CONTENT").item(i);
+            Element elm = (Element) dom(file, "CODE").item(i);
 
-            codeId = elm.getElementsByTagName("CODE").item(0).getChildNodes().item(0).getNodeValue();
-            nomTyp = elm.getElementsByTagName("NOM_TYP").item(0).getChildNodes().item(0).getNodeValue();
-            cnt = elm.getElementsByTagName("CNT").item(0).getChildNodes().item(0).getNodeValue();
+            codeId = elm.getAttribute("CODE_ID");
+            nomTyp = Integer.parseInt(elm.getElementsByTagName("NOM_TYP").item(0).getChildNodes().item(0).getNodeValue());
+            cnt = Integer.parseInt(elm.getElementsByTagName("CNT").item(0).getChildNodes().item(0).getNodeValue());
+            list.add(i, new ContLine(codeId, nomTyp, cnt));
         }
-
-        return new ContLine(codeId, nomTyp, cnt);
+        return list;
     }
-
 }
