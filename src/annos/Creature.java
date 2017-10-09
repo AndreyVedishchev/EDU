@@ -7,7 +7,7 @@ import abstrations.Limbs;
 
 public abstract class Creature implements ISound, IMove {
     private int age;
-    @MyAnno(213)
+
     private Limbs limbs;
     private Eniv en;//перечелсление среды обитание //сложный
     //protected Eniv en; // легкий
@@ -18,7 +18,7 @@ public abstract class Creature implements ISound, IMove {
         this.limbs = limbs;
     }
 
-    @MyAnno(12)
+    //@MyAnno(12)
     public int getAge() {
 
         return age;

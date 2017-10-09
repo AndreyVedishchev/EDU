@@ -1,10 +1,10 @@
-package tasks.parsing_XML_to_Map;
+package tasks.parsing_XML_to_Document;
 
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DocOut {
@@ -17,7 +17,7 @@ public class DocOut {
     private String dsc;
     private List<ContLine> lines;
 
-    public DocOut(String idDoc, String date, String shipmentDate, String responsPerson, String customer, String destination, String dsc, File file)
+    public DocOut(String idDoc, String date, String shipmentDate, String responsPerson, String customer, String destination, String dsc)
             throws ParserConfigurationException, SAXException, IOException {
 
         this.idDoc = idDoc;
@@ -27,7 +27,7 @@ public class DocOut {
         this.customer = customer;
         this.destination = destination;
         this.dsc = dsc;
-        this.lines = Parser.fileToContLineList(file);
+        this.lines = new ArrayList<>();
     }
 
     public String getIdDoc() {

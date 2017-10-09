@@ -1,4 +1,4 @@
-package tasks.parsing_XML_to_Map;
+package tasks.parsing_XML_to_Document;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -10,9 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 class Parser {
@@ -21,9 +19,8 @@ class Parser {
     static Map<String, Nom> map;
 
     static String idDoc, date, shipmentDate, responsPerson, customer, destination, dsc;
-    static DocOut docOut;
 
-    static List <ContLine>list;
+    //static List <ContLine>list;
     static String codeId;
     static int nomTyp, cnt;
 
@@ -53,7 +50,7 @@ class Parser {
     }
 
     static DocOut fileToDocOut (File file) throws ParserConfigurationException, IOException, SAXException{
-
+        DocOut ret = null;
         dom(file, "DOC_OUT");
 
         for (int i = 0; i < dom(file, "DOC_OUT").getLength(); i++) {
@@ -67,24 +64,19 @@ class Parser {
             customer = elm.getElementsByTagName("CUSTOMER").item(0).getChildNodes().item(0).getNodeValue();
             destination = elm.getElementsByTagName("DESTINATION").item(0).getChildNodes().item(0).getNodeValue();
             dsc = elm.getElementsByTagName("DSC").item(0).getChildNodes().item(0).getNodeValue();
+
+            ret = new DocOut(idDoc, date, shipmentDate, responsPerson, customer, destination, dsc);
+
+            for (int j = 0; j < dom(file, "CODE").getLength(); j++) {
+
+                Element elm1 = (Element) dom(file, "CODE").item(j);
+
+                codeId = elm1.getAttribute("CODE_ID");
+                nomTyp = Integer.parseInt(elm.getElementsByTagName("NOM_TYP").item(0).getChildNodes().item(0).getNodeValue());
+                cnt = Integer.parseInt(elm.getElementsByTagName("CNT").item(0).getChildNodes().item(0).getNodeValue());
+                ret.addLine(new ContLine(codeId, nomTyp, cnt));
+            }
         }
-        return docOut = new DocOut(idDoc, date, shipmentDate, responsPerson, customer, destination, dsc, file);
-    }
-
-    static List <ContLine>fileToContLineList (File file) throws IOException, SAXException, ParserConfigurationException {
-
-        list = new ArrayList();
-        dom(file, "CODE");
-
-        for (int i = 0; i < dom(file, "CODE").getLength(); i++) {
-
-            Element elm = (Element) dom(file, "CODE").item(i);
-
-            codeId = elm.getAttribute("CODE_ID");
-            nomTyp = Integer.parseInt(elm.getElementsByTagName("NOM_TYP").item(0).getChildNodes().item(0).getNodeValue());
-            cnt = Integer.parseInt(elm.getElementsByTagName("CNT").item(0).getChildNodes().item(0).getNodeValue());
-            list.add(i, new ContLine(codeId, nomTyp, cnt));
-        }
-        return list;
+        return ret;
     }
 }

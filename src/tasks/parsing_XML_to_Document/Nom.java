@@ -1,4 +1,4 @@
-package tasks.parsing_XML_to_Map;
+package tasks.parsing_XML_to_Document;
 
 
 public class Nom {
