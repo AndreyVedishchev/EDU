@@ -3,7 +3,7 @@ package tasks.validParentheses;
 public class ValidParentheses {
     public static void main(String[] args) {
         ValidParentheses validParentheses = new ValidParentheses();
-        System.out.println(validParentheses.isValid("}{[]"));
+        System.out.println(validParentheses.isValid("([|||}{"));
     }
     public boolean isValid(String s) {
         String sub, subarr;
@@ -19,7 +19,7 @@ public class ValidParentheses {
 //            }
 //        }
 
-        for (int i = 0; i <= 1; i++) {
+        for (int i = 0; i < arr.length/2; i++) {
             if (arr[i] == '{') arr[i] = '}';
             if (arr[i] == '}') arr[i] = '{';
             if (arr[i] == '(') arr[i] = ')';
@@ -32,10 +32,10 @@ public class ValidParentheses {
         }
 
 
-        //subarr = stringBuffer.toString();
+        subarr = stringBuffer.toString();
         sub = s.substring(arr.length/2, arr.length);
 
-        System.out.println(stringBuffer + " от начала к середине");
+        System.out.println(subarr + " от начала к середине");
         System.out.println(sub + " от середины до конца");
 
         if (sub.equals(stringBuffer))return true;
