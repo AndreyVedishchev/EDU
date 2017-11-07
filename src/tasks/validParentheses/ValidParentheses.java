@@ -1,36 +1,37 @@
 package tasks.validParentheses;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ValidParentheses {
     public static void main(String[] args) {
         ValidParentheses validParentheses = new ValidParentheses();
-        System.out.println(validParentheses.isValid("(()("));
+        System.out.println(validParentheses.isValid("[]()"));
     }
 
-    public boolean isValid(String s) throws ArrayIndexOutOfBoundsException{
+    public boolean isValid(String s) {
         String sub, subarr;
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuffer = new StringBuilder();
         char[] arr = s.toCharArray();
-        int nestingSimple = 0;
-        int nestingCurly = 0;
-        int nestingSquare = 0;
+        int cnt1 = 0, cnt2 = 0;
 
-        try {
-            for (int i = 0; i < arr.length; i++) {
-                if (arr.length % 2 == 0)
-                    if (arr[i] == '(' && arr[i + 1] == ')' ||
-                        arr[i] == '[' && arr[i + 1] == ']' ||
-                        arr[i] == '{' && arr[i + 1] == '}') return true;
+        Map <Character, Integer>map = new HashMap<>();
+        map.put('{', -1);
+        map.put('}', 1);
+        map.put('(', -2);
+        map.put(')', 2);
+        map.put('[', -3);
+        map.put(']', 3);
 
-                switch (arr[i]) {
-                    case '{': nestingCurly--; break;
-                    case '}': nestingCurly++; break;
-                    case '(': nestingSimple -= 2; break;
-                    case ')': nestingSimple += 2; break;
-                    case '[': nestingSquare -= 3; break;
-                    case ']': nestingSquare += 3; break;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr.length % 2 == 0) {
+                cnt1 += map.get(arr[i]);
+                if (i % 2 == 0) {
+                    cnt2 = map.get(arr[i]) + map.get(arr[i + 1]);
+                    System.out.println("cnt2 = "+cnt2);
                 }
-            }
-        }catch (Exception ignored) {}
+            }else return false;
+        }
 
         for (int i = (arr.length - 1) / 2; i >= 0 ; i--) {
             switch (arr[i]) {
@@ -47,9 +48,6 @@ public class ValidParentheses {
         subarr = stringBuffer.toString();
         sub = s.substring(arr.length/2, arr.length);
 
-        System.out.println(subarr);
-        System.out.println(sub);
-
-        return ((nestingCurly == 0 && nestingSimple == 0 && nestingSquare == 0) && sub.equals(subarr));
+        return (cnt2 == 0 || sub.equals(subarr));
     }
 }
