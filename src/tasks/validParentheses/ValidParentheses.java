@@ -6,7 +6,7 @@ import java.util.Map;
 public class ValidParentheses {
     public static void main(String[] args) {
         ValidParentheses validParentheses = new ValidParentheses();
-        System.out.println(validParentheses.isValid("[]()"));
+        System.out.println(validParentheses.isValid("(([]){})"));
     }
 
     public boolean isValid(String s) {
@@ -30,7 +30,7 @@ public class ValidParentheses {
                     cnt2 = map.get(arr[i]) + map.get(arr[i + 1]);
                     System.out.println("cnt2 = "+cnt2);
                 }
-            }else return false;
+            } else return false;
         }
 
         for (int i = (arr.length - 1) / 2; i >= 0 ; i--) {
@@ -46,8 +46,13 @@ public class ValidParentheses {
         }
 
         subarr = stringBuffer.toString();
-        sub = s.substring(arr.length/2, arr.length);
+        sub = s.substring(arr.length / 2, arr.length);
 
-        return (cnt2 == 0 || sub.equals(subarr));
+        System.out.println(cnt1 == 0);
+        System.out.println(cnt2 == 0);
+        System.out.println(sub.equals(subarr));
+        System.out.println();
+
+        return  ((sub.equals(subarr)) || cnt1 == 0 && cnt2 == 0);
     }
 }
