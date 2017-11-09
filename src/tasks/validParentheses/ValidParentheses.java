@@ -1,58 +1,32 @@
 package tasks.validParentheses;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ValidParentheses {
     public static void main(String[] args) {
         ValidParentheses validParentheses = new ValidParentheses();
-        System.out.println(validParentheses.isValid("(([]){})"));
+        System.out.println(validParentheses.isValid("([])"));
     }
 
     public boolean isValid(String s) {
-        String sub, subarr;
-        StringBuilder stringBuffer = new StringBuilder();
-        char[] arr = s.toCharArray();
-        int cnt1 = 0, cnt2 = 0;
 
-        Map <Character, Integer>map = new HashMap<>();
-        map.put('{', -1);
-        map.put('}', 1);
-        map.put('(', -2);
-        map.put(')', 2);
-        map.put('[', -3);
-        map.put(']', 3);
+        char[] arr = s.toCharArray();
+        List <Character>list = new ArrayList<>();
 
         for (int i = 0; i < arr.length; i++) {
-            if (arr.length % 2 == 0) {
-                cnt1 += map.get(arr[i]);
-                if (i % 2 == 0) {
-                    cnt2 = map.get(arr[i]) + map.get(arr[i + 1]);
-                    System.out.println("cnt2 = "+cnt2);
-                }
+            list.add(arr[i]);
+        }
+
+        for (int i = list.size() - 1; i >= 0; i--) {
+            if (list.get(i) == '(' && list.get(i + 1) == ')'||
+                list.get(i) == '[' && list.get(i + 1) == ']'||
+                list.get(i) == '{' && list.get(i + 1) == '}') {
+
+                list.remove(i + 1);
+                list.remove(i);
             } else return false;
         }
-
-        for (int i = (arr.length - 1) / 2; i >= 0 ; i--) {
-            switch (arr[i]) {
-                case '{': arr[i] = '}'; break;
-                case '}': arr[i] = '{'; break;
-                case '(': arr[i] = ')'; break;
-                case ')': arr[i] = '('; break;
-                case '[': arr[i] = ']'; break;
-                case ']': arr[i] = '['; break;
-            }
-            stringBuffer.append(arr[i]);
-        }
-
-        subarr = stringBuffer.toString();
-        sub = s.substring(arr.length / 2, arr.length);
-
-        System.out.println(cnt1 == 0);
-        System.out.println(cnt2 == 0);
-        System.out.println(sub.equals(subarr));
-        System.out.println();
-
-        return  ((sub.equals(subarr)) || cnt1 == 0 && cnt2 == 0);
+        return (list.size() == 0);
     }
 }
