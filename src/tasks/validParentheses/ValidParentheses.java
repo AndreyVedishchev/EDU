@@ -6,7 +6,7 @@ import java.util.List;
 public class ValidParentheses {
     public static void main(String[] args) {
         ValidParentheses validParentheses = new ValidParentheses();
-        System.out.println(validParentheses.isValid("(){}[]"));
+        System.out.println(validParentheses.isValid("[](){}"));
     }
 
     public boolean isValid(String s) {
@@ -18,24 +18,15 @@ public class ValidParentheses {
             list.add(arr[i]);
         }
 
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>" + list);
+        for (int i = 0; i <= list.size(); i+=2) {
+            if (list.get(i) == '(' && list.get(i + 1) == ')' ||
+                list.get(i) == '[' && list.get(i + 1) == ']' ||
+                list.get(i) == '{' && list.get(i + 1) == '}') {
 
-            //System.out.println("list.get(i)==" + list.get(i) + "; list.get(i + 1)==" + list.get(i + 1));
-
-            if (list.get(i) == '(' && list.get(i + 1) == ')') {list.remove(i + 1);list.remove(i);
-                System.out.println("остаток== " + list + " итерация 1()");}
-
-            if (list.get(i) == '[' && list.get(i + 1) == ']') {list.remove(i + 1);list.remove(i);
-                System.out.println("остаток== " + list + " итерация 2[]");}
-
-            if (list.get(i) == '{' && list.get(i + 1) == '}') {list.remove(i + 1);list.remove(i);
-                System.out.println("остаток== " + list + " итерация 3{}");}
-            System.out.println(i);
-            System.out.println("----------------------------");
+                list.remove(i + 1);
+                list.remove(i);
+            }
         }
-
-        System.out.println(list);
         return (list.size() == 0);
     }
 }
