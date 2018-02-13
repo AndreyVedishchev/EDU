@@ -9,7 +9,10 @@ import java.io.FileNotFoundException;
  */
 public class Test {
     public static void main (String[] args) throws FileNotFoundException {
-        new RuntimeException();
-        throw new FileNotFoundException();
+       String str1 = "leetcode";
+       String str2 = "leep";
+       String str3 = "less";
+
+        System.out.println(str1.indexOf(str2));
     }
 }
